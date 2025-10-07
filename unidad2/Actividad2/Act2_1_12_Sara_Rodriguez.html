@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title>
+</head>
+<body>
+    <script>
+        let tamaño = prompt("Introduce el tamaño del cuadrado:");
+        tamaño = parseInt(tamaño);
+
+        for (let i=0; i<tamaño;i++){ //filas
+            let linea=""; 
+
+            for (let j=0; j<tamaño;j++){ //columnas
+                 linea+="* ";
+            }
+            document.write (linea + "<br>"); //imprime cada fila
+        }
+
+        </script>
+</body>
+</html>
+

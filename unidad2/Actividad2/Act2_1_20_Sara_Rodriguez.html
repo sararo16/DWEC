@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title> 
+</head>
+<body> 
+    <script>
+        let opcion;
+
+        do{
+            opcion=parseInt(prompt("Elige una opción:\n1. Salir\n2. Sumatorio\n3. Factorial"));
+
+            if (opcion ==2){
+                let num=parseInt(prompt("Introduce un número entero positivo para calcular su sumatorio:"));
+                let sumatorio=0;
+
+                for (let i=1;i<=num;i++){
+                    sumatorio +=i;
+                }
+                alert("El sumatorio de "+num+" es: "+sumatorio+"<br>");
+            }else if (opcion==3){
+                let num=parseInt(prompt("Introduce un número entero positivo para calcular su factorial:"));
+                let factorial=1;
+
+                for (let i=1;i<=num;i++){
+                    factorial *=i;
+                }
+                alert("El factorial de "+num+" es: "+factorial+"<br>");
+            }else if (opcion !=1){
+                alert("Opción no válida. Por favor, elige 1, 2 o 3.");
+            }
+        }while (opcion != 1);
+        alert("Has salido del programa.");
+    </script>
+</body>
+</html>
+

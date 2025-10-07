@@ -1,0 +1,42 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title> 
+</head>
+
+<body>
+    <script>
+   let v1=parseInt(prompt("Introduce el primer valor"));
+   let v2=parseInt(prompt("Introduce el segundo valor"));
+    let v3=parseInt(prompt("Introduce el tercer valor"));
+
+    if (v1===0 && v2===0 && v3===0){
+        alert("Todas las variables son cero");ç
+    }
+
+    if (v1>0 && v2>0 && v3>0){
+        alert("Todas las variables son positivas");
+    }
+
+    if (v1>=0 && v2>=0 && v3>=0 || v1<=0 && v2<=0 && v3<=0){
+        alert("Todas las variables son del mismo signo");
+    }
+
+    if (v1!==v2 && v1!==v3 && v2!==v3){
+        alert("Todos los valores son distintos");
+    }
+
+    if (v1===v2 || v1===v3 || v2===v3){
+        alert("Dos de sus valores son iguales");
+    }
+
+    if (!(v1===v2 && v2===v3)){
+        alert("Como máximo dos de sus valores son iguales");
+    }
+    if ((v2>=Math.min(v1,v3)) && (v2<=Math.max(v1,v3))){
+        alert("El valor de v2 está comprendido entre v1 y v3");
+    }
+    </script>
+</body>
+</html>

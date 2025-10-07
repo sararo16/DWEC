@@ -1,0 +1,38 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title> 
+</head>
+
+<body>
+    <script>
+        let mes=parseInt(prompt("Introduce un mes del año (1-12)"));
+        let dias;
+
+        switch (mes){
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                dias=31;
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                dias=30;
+                break;
+            case 2:
+                dias=28;
+                break;
+            default:
+                dias="Mes incorrecto";
+        }
+        document.write("El mes " + mes + " tiene " + dias + " días.");
+    </script>
+</body>
+</html>

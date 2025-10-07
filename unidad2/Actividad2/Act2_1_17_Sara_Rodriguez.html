@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title>
+</head>
+
+<body>
+    <script>
+        let num1,num2;
+
+        do{
+            num1=parseInt (prompt("Introduce el primer número entero (menor de 50): "));
+            num2=parseInt(prompt("Introduce el segundo número entero (menor de 50):"));
+        }while (!(num1<50 && num2<50));
+
+       let menor, mayor;
+       
+       if (num1<num2){
+        menor=num1;
+        mayor=num2;
+       }else{
+        menor=num2;
+        mayor=num1;
+       }
+
+       while (menor <=mayor){
+       document.write ("Menor: "+menor+ " Mayor: "+mayor+ "<br>");
+       menor +=5;
+       mayor+=2;
+       }
+
+
+    </script>
+</body>
+</html>

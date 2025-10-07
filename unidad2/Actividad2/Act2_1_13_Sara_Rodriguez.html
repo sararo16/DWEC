@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title>
+</head>
+<body>
+    <script>
+        let precioSinIva = prompt("Introduce el precio sin IVA");
+        precioSinIva = parseFloat(precioSinIva);
+
+        let iva = prompt("Introduce el IVA a aplicar");
+        iva=parseFloat(iva);
+
+        let total= precioSinIva+ (precioSinIva*iva/100);
+
+        document.write ("El precio total del producto es "+total + "€ "); 
+
+    </script>
+</body>
+</html>

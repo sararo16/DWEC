@@ -1,0 +1,51 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title> 
+</head>
+
+<body>
+    <script>
+   let dia=parseInt(prompt("Introduce el día:"));
+   let mes=parseInt(prompt("Introduce el mes:"));
+   let año=parseInt(prompt("Introduce el año:"));
+
+   let fechaValida=true;
+
+   if (mes<1||mes>12){
+       fechaValida=false;
+    } else {
+        let esBisiesto=false;
+        if ((año%4===0 && año%100!==0) || (año%400===0)){
+            esBisiesto=true;
+        }
+
+        let diasMes;
+        switch(mes){
+            case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                diasMes=31;
+                break;
+            case 4: case 6: case 9: case 11:
+                diasMes=30;
+                break;
+            case 2:
+                diasMes=esBisiesto ? 29 : 28;
+                break;
+            
+        }
+
+        if (dia<1 || dia>diasMes){
+            fechaValida=false;
+        }
+
+    }
+
+    if (fechaValida){
+        alert("La fecha " + dia + "/" + mes + "/" + año + " es válida.");
+    } else {
+        alert("La fecha " + dia + "/" + mes + "/" + año + " no es válida.");
+    }
+    </script>
+</body>
+</html>

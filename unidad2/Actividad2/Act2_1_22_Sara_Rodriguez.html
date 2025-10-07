@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title> 
+</head>
+<body>
+    <script>
+        let suma=0;
+        let contador=0;
+        let numero;
+
+        do{
+            numero=prompt("Introduce un número (o deja vacío para terminar):");
+            if (numero!==null && numero!==""){
+                numero=parseFloat(numero);
+                suma+=numero;
+                contador++;
+            }
+        }while (numero!==null && numero!=="");
+        if (contador>0){
+            let media=suma/contador;
+            alert("La media de los números introducidos es: "+media);
+        }else{
+            alert("No se han introducido números válidos.");
+        }
+
+    </script>
+</body> 
+</html>

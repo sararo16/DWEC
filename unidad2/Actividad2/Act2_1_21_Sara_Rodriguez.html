@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title> 
+</head>
+<body>
+    <script>
+       let total=parseInt(prompt ("Inttroduce el número total de personas en el salón de clases:"));
+
+       let hombres=0;
+       let mujeres=0;
+
+       for (let i=1;i<=total;i++){
+        let genero=prompt("Introduce el género de la persona "+i+" (H/M):").toUpperCase();
+
+        if (genero==="H"){
+            hombres++;
+        }else if (genero==="M"){
+            mujeres++;
+        }else{
+            alert("Género no válido. Por favor, introduce 'H' para hombre o 'M' para mujer.");
+            i--; 
+        }
+       }
+       let porcentajeHombres=(hombres/total)*100;
+       let porcentajeMujeres=(mujeres/total)*100;
+
+       alert("Total de hombres: "+hombres+" ("+porcentajeHombres.toFixed(2)+"%)\nTotal de mujeres: "+mujeres+" ("+porcentajeMujeres.toFixed(2)+"%)");
+    </script>

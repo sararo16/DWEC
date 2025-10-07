@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title> 
+</head>
+<body>
+    <script>
+       let num1=parseInt(prompt ("Introduce el primer número"));
+       let num2=parseInt(prompt ("Introduce el segundo número"));
+       let contadoPares=0;
+       let contadorImpares=0;
+        for (let i=num1; i<=num2;i++){
+            if (i%2==0){
+            contadoPares++;
+             }else{
+             contadorImpares++;
+            }
+        }
+        document.write("Entre "+num1+" y "+num2+" hay:<br>");
+       document.write("Números pares: "+contadoPares+"<br>");
+       document.write("Números impares: "+contadorImpares+"<br>");
+    
+
+    </script>
+
+</body>
+</html>

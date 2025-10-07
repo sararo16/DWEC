@@ -1,0 +1,34 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title> 
+</head>
+
+<body>
+    <script>
+        let apuesta=parseFloat (prompt ("Introduce la cantidad a apostar:"));
+
+        if (isNaN(apuesta)||apuesta<=0){
+            alert("Cantidad no válida");
+        }else{
+            let numeroAleatorio=Math.random();
+            let moneda;
+
+            if (numeroAleatorio<0.5){
+                moneda="cruz";
+            }else{
+                moneda="cara";
+            }
+
+        
+
+        if (moneda==="cara"){
+            alert("Ha salido cara. Has ganado el doble: "+(apuesta*2)+"€");
+        }else{
+            alert("Ha salido cruz. Has perdido todo");
+        }
+        }
+    </script>
+</body>
+</html>

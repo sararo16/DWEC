@@ -1,0 +1,66 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title> 
+</head>
+
+<body>
+    <script>
+        
+    let secreto = [];
+    for (let i = 0; i < 4; i++) {
+        let num = parseInt(prompt("Jugador 1: introduce el número " + (i+1) + " de la combinación secreta:"));
+        secreto.push(num);
+    }
+
+    let intentos = 0;
+    let acierto = false;
+
+    while (intentos < 8 && !acierto) {
+        intentos++;
+        let intento = [];
+        for (let i = 0; i < 4; i++) {
+            let num = parseInt(prompt("Jugador 2: introduce el número " + (i+1) + " del intento " + intentos + ":"));
+            intento.push(num);
+        }
+
+       
+        let muertos = 0;
+        let heridos = 0;
+
+        let secretoTemp = secreto.slice();
+        let intentoTemp = intento.slice();
+
+        for (let i = 0; i < 4; i++) {
+            if (intentoTemp[i] === secretoTemp[i]) {
+                muertos++;
+                // Marcamos con null para no contarlo como herido luego
+                secretoTemp[i] = intentoTemp[i] = null;
+            }
+        }
+
+        for (let i = 0; i < 4; i++) {
+            if (intentoTemp[i] !== null) {
+                let index = secretoTemp.indexOf(intentoTemp[i]);
+                if (index !== -1) {
+                    heridos++;
+                    secretoTemp[index] = null; // Marcamos como usado
+                }
+            }
+        }
+
+        alert("Intento " + intentos + ": " + muertos + " muertos, " + heridos + " heridos");
+
+        if (muertos === 4) {
+            acierto = true;
+            alert("¡Felicidades! Has adivinado la combinación secreta en " + intentos + " intentos.");
+        }
+    }
+
+    if (!acierto) {
+        alert("Se han acabado los 8 intentos. La combinación secreta era: " + secreto.join(", "));
+    }
+    </script>
+</body>
+</html>
