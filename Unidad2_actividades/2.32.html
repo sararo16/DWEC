@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.32: Operador Condicional</title>
+</head>
+<body>
+    <script>
+        let edad = parseInt(prompt("Introduce tu edad:", ""));
+
+        if (isNaN(edad) || edad < 0) {
+            alert("Por favor, introduce una edad válida.");
+        } else {
+            // Operador Condicional (Ternario): (expresión) ? sentencia1 : sentencia2
+            let mensaje = edad > 65 ? "Está usted jubilado" : "Todavía está usted en activo";
+            
+            alert(mensaje);
+        }
+    </script>
+</body>
+</html>

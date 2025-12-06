@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.51: Conversión de Base 8</title>
+</head>
+<body>
+    <script>
+        let numeroOctal = prompt("Introduce un número en base 8 (Octal):", "");
+
+        // La función parseInt(string, base) interpreta la cadena en la base dada.
+        let numeroDecimal = parseInt(numeroOctal, 8); 
+
+        if (isNaN(numeroDecimal)) {
+            alert("Por favor, introduce un número Octal válido.");
+        } else {
+            // Conversión de Decimal a Binario (Base 2)
+            let numeroBinario = numeroDecimal.toString(2); 
+
+            let salida = `<h1>Conversiones desde Base 8 (${numeroOctal}):</h1>`;
+            salida += `En Base Decimal (Base 10): ${numeroDecimal}<br>`;
+            salida += `En Base Binaria (Base 2): ${numeroBinario}`;
+
+            document.write(salida);
+        }
+    </script>
+</body>
+</html>

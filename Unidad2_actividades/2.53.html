@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.53: Mínimo y Máximo de Number</title>
+</head>
+<body>
+    <script>
+        // Number.MAX_VALUE es la constante que representa el número más grande posible
+        let maximoValor = Number.MAX_VALUE; 
+        
+        // Number.MIN_VALUE es la constante que representa el número positivo más cercano a 0
+        // Para obtener el número negativo más pequeño (que es el valor más pequeño en general), se usa -MAX_VALUE.
+        let minimoValor = Number.MIN_VALUE; 
+        let maximoNegativo = -Number.MAX_VALUE; 
+
+        let salida = "<h1>Límites de la Variable 'Number' en JavaScript:</h1>";
+        salida += `Valor MÁXIMO representable (Number.MAX_VALUE): ${maximoValor}<br>`; // 
+        salida += `Valor MÁS CERCANO a CERO (Number.MIN_VALUE): ${minimoValor}<br>`; // Es el positivo más pequeño
+        salida += `Valor MÁS PEQUEÑO (máximo negativo): ${maximoNegativo}`; // 
+        
+        document.write(salida);
+    </script>
+</body>
+</html>

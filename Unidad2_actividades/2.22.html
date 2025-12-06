@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Ejercicio 22: media numeros</title>
+    </head>
+
+    <body>
+        <script>
+           // 1. Inicializar variables de conteo y suma FUERA del bucle.
+            let totalNumeros = 0;
+            let sumaTotal = 0;
+            let media = 0;
+
+            // 2. Pedir al usuario cuántos números quiere introducir.
+            let inputTotal = prompt("¿Cuántos números quieres introducir?", "");
+            totalNumeros = parseInt(inputTotal);
+
+            // 3. Validar que la entrada sea un número positivo.
+            if (isNaN(totalNumeros) || totalNumeros <= 0) {
+                alert("Por favor, introduce un número válido y positivo.");
+            } else {
+                
+                // 4. Bucle para introducir y sumar cada número.
+                // El bucle debe ir de 1 hasta totalNumeros para ser más claro para el usuario.
+                for (let i = 1; i <= totalNumeros; i++) {
+                    let inputNumero = prompt("Introduce el número " + i, "");
+                    let numeroActual = parseInt(inputNumero);
+
+                    // Validar que se ha introducido un número válido
+                    if (!isNaN(numeroActual)) {
+                        // Acumular la suma total
+                        sumaTotal = sumaTotal + numeroActual; 
+                    } else {
+                        alert("Entrada inválida. Se omitirá esta entrada.");
+                        // Opcionalmente, puedes decrementar i para que el usuario repita la entrada
+                    }
+                }
+
+                // 5. Calcular la media (suma total dividida por la cantidad de números).
+                media = sumaTotal / totalNumeros;
+
+                // 6. Mostrar los resultados al usuario.
+                let resultado = "--- Resultados ---\n";
+                resultado += "Suma de los números: " + sumaTotal + "\n";
+                resultado += "Total de números introducidos: " + totalNumeros + "\n";
+                resultado += "La media (promedio) es: " + media.toFixed(2); // .toFixed(2) para 2 decimales
+
+                alert(resultado);
+                document.write("<h1>" + resultado.replace(/\n/g, "<br>") + "</h1>");
+            }
+        </script>
+    </body>
+</html>

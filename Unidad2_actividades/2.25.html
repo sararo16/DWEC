@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.25: Doble o Nada</title>
+</head>
+<body>
+    <script>
+        let apuesta = parseFloat(prompt("Introduce la cantidad a apostar:", ""));
+
+        if (isNaN(apuesta) || apuesta <= 0) {
+            alert("Por favor, introduce una cantidad válida para apostar.");
+        } else {
+            // Generar aleatoriamente 0 (Cruz) o 1 (Cara)
+            // Math.random() genera [0, 1), Math.round lo redondea a 0 o 1.
+            let resultadoMoneda = Math.round(Math.random()); 
+            let mensaje;
+            
+            if (resultadoMoneda === 1) { // Cara
+                let ganancia = apuesta * 2;
+                mensaje = `¡Ha salido CARA! 🪙 Has ganado.\nTu nueva cantidad es: ${ganancia.toFixed(2)} €`;
+            } else { // Cruz
+                let perdida = 0;
+                mensaje = `¡Ha salido CRUZ! ☠️ Lo has perdido todo.\nTu nueva cantidad es: ${perdida.toFixed(2)} €`;
+            }
+
+            alert(mensaje);
+        }
+    </script>
+</body>
+</html>

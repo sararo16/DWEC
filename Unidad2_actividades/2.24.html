@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.24: Días del Mes</title>
+</head>
+<body>
+    <script>
+        let mes = parseInt(prompt("Introduce el número de mes (1-12):", ""));
+        let anio = parseInt(prompt("Introduce el año:", ""));
+        let dias;
+
+        if (mes >= 1 && mes <= 12 && !isNaN(anio)) {
+            // Usamos un objeto Date para calcular los días del mes
+            // Se usa el mes siguiente (mes) y el día 0. El día 0 del mes N es el último día del mes N-1.
+            dias = new Date(anio, mes, 0).getDate();
+            alert(`El mes ${mes} del año ${anio} tiene ${dias} días.`);
+        } else {
+            alert("Entrada inválida. Asegúrate de introducir un mes válido (1-12) y un año.");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.34: Calcular Propinas</title>
+</head>
+<body>
+    <script>
+        let costoCena = parseFloat(prompt("Introduce el costo total de la cena:", ""));
+
+        if (isNaN(costoCena) || costoCena < 0) {
+            alert("Por favor, introduce un costo válido.");
+        } else {
+            // 1. Propina más pequeña (15%)
+            let propinaPequena = costoCena * 0.15; // [cite: 935]
+            
+            // 2. Propina más grande (25%)
+            let propinaGrande = costoCena * 0.25; // [cite: 936]
+
+            document.write("<h1>Cálculo de Propinas:</h1>");
+            document.write(`El costo de la cena fue: ${costoCena.toFixed(2)} €<br><br>`);
+            document.write(`1. La propina más pequeña vale (15%): ${propinaPequena.toFixed(2)} €<br>`); // [cite: 933]
+            document.write(`2. La propina más grande vale (25%): ${propinaGrande.toFixed(2)} €<br>`); // [cite: 934]
+        }
+    </script>
+</body>
+</html>

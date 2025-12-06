@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.45: Serie hasta Cero</title>
+</head>
+<body>
+    <script>
+        let valor;
+        let contadorValores = 0;
+        let salida = "<h1>Valores leídos:</h1>";
+
+        do {
+            valor = parseFloat(prompt("Introduce un número (0 para terminar):", ""));
+
+            if (valor !== 0 && !isNaN(valor)) { // Si no es cero y es válido
+                salida += valor + "<br>"; // Visualizar 
+                contadorValores++; // Contar 
+            }
+            
+        } while (valor !== 0); // Termina al introducir cero 
+
+        document.write(salida);
+        document.write(`Cantidad de valores leídos distintos de cero: ${contadorValores}`); // 
+    </script>
+</body>
+</html>

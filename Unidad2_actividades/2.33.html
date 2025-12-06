@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.33: Expresiones y Variables Auxiliares</title>
+</head>
+<body>
+    <script>
+        let numero = parseFloat(prompt("Introduce un número (debe ser 0 o positivo):", ""));
+
+        if (isNaN(numero) || numero < 0) {
+            alert("Número inválido: El número introducido es menor que 0."); // 
+        } else {
+            // 1. La respuesta a número*² + 1/3 - 7 [cite: 927]
+            let solucion1 = (numero * numero) + (1 / 3) - 7;
+            
+            // 2. La respuesta a número + 2 [cite: 928]
+            let solucion2 = numero + 2;
+            
+            // 3. La respuesta a número * 2.5 [cite: 929]
+            let solucion3 = numero * 2.5;
+
+            document.write("<h1>Resultados de Operaciones:</h1>");
+            document.write(`1. La respuesta a número*² + 1/3 - 7 es: ${solucion1.toFixed(4)}<br>`);
+            document.write(`2. La respuesta a número + 2 es: ${solucion2}<br>`);
+            document.write(`3. La respuesta a número * 2.5 es: ${solucion3}<br>`);
+            document.write(`4. "Fin de operación con el número: ${numero}"`); // [cite: 930]
+        }
+    </script>
+</body>
+</html>

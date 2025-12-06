@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.47: Número Primo</title>
+</head>
+<body>
+    <script>
+        let n = parseInt(prompt("Introduce un número entero 'n' para verificar si es primo:", ""));
+        let esPrimo = true;
+
+        if (isNaN(n) || n <= 1) {
+            esPrimo = false; // 1 y números negativos no son primos
+        } else if (n === 2) {
+            esPrimo = true;
+        } else if (n % 2 === 0) {
+            esPrimo = false; // Excluir todos los pares mayores que 2
+        } else {
+            // Solo necesitamos verificar divisores impares hasta la raíz cuadrada de n
+            for (let i = 3; i <= Math.sqrt(n); i += 2) {
+                if (n % i === 0) {
+                    esPrimo = false;
+                    break;
+                }
+            }
+        }
+
+        let mensaje = esPrimo ? `${n} es un número primo.` : `${n} NO es un número primo.`;
+        alert(mensaje);
+    </script>
+</body>
+</html>

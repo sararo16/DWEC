@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.28: Condiciones Lógicas</title>
+</head>
+<body>
+    <script>
+        // Variables de ejemplo para la evaluación
+        let v1 = 5;
+        let v2 = -10;
+        let v3 = 5;
+        let resultado = `Variables de ejemplo: v1=${v1}, v2=${v2}, v3=${v3}\n\n`;
+
+        // 1. Todas las variables son cero. [cite: 896]
+        let todasCero = (v1 === 0 && v2 === 0 && v3 === 0);
+        resultado += `1. Todas son cero: ${todasCero}\n`;
+
+        // 2. Todas las variables son positivas. [cite: 897]
+        let todasPositivas = (v1 > 0 && v2 > 0 && v3 > 0);
+        resultado += `2. Todas son positivas: ${todasPositivas}\n`;
+
+        // 3. Todas las variables tienen el mismo signo. [cite: 898]
+        // Opción A: todas positivas O todas negativas
+        let mismoSigno = (v1 > 0 && v2 > 0 && v3 > 0) || (v1 < 0 && v2 < 0 && v3 < 0);
+        resultado += `3. Mismo signo (excluyendo cero): ${mismoSigno}\n`;
+        
+        // 4. Todos sus valores son distintos. [cite: 899]
+        let todosDistintos = (v1 !== v2 && v1 !== v3 && v2 !== v3);
+        resultado += `4. Todos distintos: ${todosDistintos}\n`;
+
+        // 5. Dos de sus valores coinciden. [cite: 900]
+        // v1=v2 y v1!=v3 O v1=v3 y v1!=v2 O v2=v3 y v2!=v1
+        let dosCoinciden = (v1 === v2 && v1 !== v3) || (v1 === v3 && v1 !== v2) || (v2 === v3 && v2 !== v1);
+        resultado += `5. Exactamente dos coinciden: ${dosCoinciden}\n`;
+
+        // 6. Como máximo dos de sus valores coinciden. [cite: 901]
+        // Es la negación de 'Todos coinciden' (v1=v2=v3)
+        let maximoDosCoinciden = !(v1 === v2 && v2 === v3);
+        resultado += `6. Como máximo dos coinciden: ${maximoDosCoinciden}\n`;
+        
+        // 7. El valor de v2 está comprendido entre los de v1 y v3. [cite: 902]
+        // v2 está entre v1 y v3 (v1 <= v2 <= v3) O v2 está entre v3 y v1 (v3 <= v2 <= v1)
+        let v2Comprendido = (v1 <= v2 && v2 <= v3) || (v3 <= v2 && v2 <= v1);
+        resultado += `7. V2 está comprendido entre V1 y V3: ${v2Comprendido}`;
+
+        alert(resultado);
+    </script>
+</body>
+</html>

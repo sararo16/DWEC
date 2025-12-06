@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.41: Múltiplos de 11</title>
+</head>
+<body>
+    <script>
+        let suma = 0;
+        let multiplos = [];
+        
+        // Bucle para encontrar los múltiplos de 11
+        for (let i = 11; i < 300; i += 11) { // Empieza en 11, incrementa en 11, hasta 299
+            multiplos.push(i);
+            suma += i; // Acumular la suma 
+        }
+        
+        let salida = "<h1>Múltiplos de 11 menores de 300:</h1>";
+        salida += multiplos.join(", ") + "<br>"; // Visualizar los múltiplos 
+        salida += `La suma de todos ellos es: ${suma}`; // Visualizar la suma 
+
+        document.write(salida);
+    </script>
+</body>
+</html>

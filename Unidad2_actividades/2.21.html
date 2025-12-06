@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+    Ejercicio 21.porcentaje mujeres y hombres
+    </title>
+</head>
+
+<body>
+    <script>
+        // 1. Inicializar contadores
+        let totalPersonas = 0;
+        let mujeres = 0;
+        let hombres = 0;
+
+        // Pedir el total de personas
+        let inputTotal = prompt("¿Cuántas personas hay en la sala?", "");
+        totalPersonas = parseInt(inputTotal);
+
+        // Validar que el total sea un número positivo
+        if (isNaN(totalPersonas) || totalPersonas <= 0) {
+            alert("Debe ingresar un número válido y positivo de personas.");
+        } else {
+            
+            // 2. Bucle para preguntar el sexo de cada persona
+            for (let i = 1; i <= totalPersonas; i++) {
+                let sexo = prompt("La persona número " + i + " es hombre o mujer (H o M)", "").toUpperCase();
+                
+                // 3. Contar el sexo
+                if (sexo === 'M') {
+                    mujeres++;
+                } else if (sexo === 'H') {
+                    hombres++;
+                } else {
+                    alert("Entrada inválida. Por favor, use 'H' o 'M'. Esta persona no será contada.");
+                }
+            }
+
+            // 4. Calcular los porcentajes
+            let porcentajeMujeres = (mujeres / totalPersonas) * 100;
+            let porcentajeHombres = (hombres / totalPersonas) * 100;
+
+            // 5. Mostrar resultados
+            let resultado = "--- Resultados ---\n";
+            resultado += "Total de personas: " + totalPersonas + "\n";
+            resultado += "Total mujeres (M): " + mujeres + " (" + porcentajeMujeres.toFixed(2) + "%)\n";
+            resultado += "Total hombres (H): " + hombres + " (" + porcentajeHombres.toFixed(2) + "%)\n";
+
+            alert(resultado);
+            document.write("<h1>" + resultado.replace(/\n/g, "<br>") + "</h1>");
+        }
+    </script>
+</html>

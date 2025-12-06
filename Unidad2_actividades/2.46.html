@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.46: Serie 3, 6, 9...</title>
+</head>
+<body>
+    <script>
+        let suma = 0;
+        let serie = [];
+        
+        // La serie son múltiplos de 3, desde 3 hasta 99.
+        for (let i = 3; i <= 99; i += 3) {
+            serie.push(i); // Visualizar 
+            suma += i;     // Sumar 
+        }
+        
+        let salida = "<h1>Serie de Números (3, 6, 9... 99):</h1>";
+        salida += serie.join(", ") + "<br>";
+        salida += `La suma de la serie es: ${suma}`;
+
+        document.write(salida);
+    </script>
+</body>
+</html>

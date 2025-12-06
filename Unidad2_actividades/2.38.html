@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.38: For Incremento 3</title>
+</head>
+<body>
+    <script>
+        let salida = "<h1>Números del 1 al 25 con incremento de 3:</h1>";
+        let contadorLinea = 0;
+        let lineaActual = "";
+
+        // Bucle for: comienza en 1 y se incrementa en 3 en cada iteración 
+        for (let i = 1; i <= 25; i += 3) {
+            lineaActual += i + ", ";
+            contadorLinea++;
+
+            // Escribir 4 números en cada línea 
+            if (contadorLinea === 4) {
+                salida += lineaActual + "<br>";
+                lineaActual = ""; // Reiniciar la línea
+                contadorLinea = 0; // Reiniciar el contador
+            }
+        }
+        
+        // Escribir la última línea si no estaba completa
+        if (lineaActual !== "") {
+            salida += lineaActual;
+        }
+
+        document.write(salida);
+    </script>
+</body>
+</html>

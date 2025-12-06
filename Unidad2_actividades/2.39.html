@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.39: While Feliz</title>
+</head>
+<body>
+    <script>
+        let veces = parseInt(prompt("¿Cuántas veces quieres escribir 'Feliz'?", ""));
+        let salida = "";
+        let i = 0;
+
+        if (isNaN(veces) || veces <= 0) {
+            alert("Por favor, introduce un número entero positivo.");
+        } else {
+            // Bucle while 
+            while (i < veces) {
+                salida += "Feliz "; // 
+                i++;
+            }
+            salida += "Cumpleaños";
+            document.write("<h1>" + salida + "</h1>");
+        }
+    </script>
+</body>
+</html>

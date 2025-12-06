@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.26: Ordenar Decreciente</title>
+</head>
+<body>
+    <script>
+        let a = parseFloat(prompt("Introduce el primer número:", ""));
+        let b = parseFloat(prompt("Introduce el segundo número:", ""));
+        let c = parseFloat(prompt("Introduce el tercer número:", ""));
+
+        if (isNaN(a) || isNaN(b) || isNaN(c)) {
+            alert("Por favor, introduce tres números válidos.");
+        } else {
+            // Usamos un array y el método sort() para ordenar
+            let numeros = [a, b, c];
+            
+            // Función de comparación para ordenar de forma decreciente (de mayor a menor)
+            numeros.sort(function(x, y) {
+                return y - x;
+            });
+
+            alert(`Los números en orden decreciente son: ${numeros.join(", ")}`);
+        }
+    </script>
+</body>
+</html>

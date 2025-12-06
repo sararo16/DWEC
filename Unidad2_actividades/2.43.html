@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.43: Múltiplos y Suma</title>
+</head>
+<body>
+    <script>
+        let numero = parseInt(prompt("Introduce un número para calcular sus primeros 10 múltiplos:", ""));
+
+        if (isNaN(numero)) {
+            alert("Por favor, introduce un número entero.");
+        } else {
+            let suma = 0;
+            let multiplos = [];
+
+            // Bucle for: 10 primeras iteraciones 
+            for (let i = 1; i <= 10; i++) {
+                let multiplo = numero * i;
+                multiplos.push(multiplo); // 
+                suma += multiplo; // 
+            }
+
+            let salida = `<h1>Los 10 primeros múltiplos de ${numero} son:</h1>`;
+            salida += multiplos.join(", ") + "<br>"; // Visualizar 
+            salida += `La suma de todos ellos es: ${suma}`; // Visualizar la suma 
+
+            document.write(salida);
+        }
+    </script>
+</body>
+</html>

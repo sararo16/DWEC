@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.29: Suma hasta N</title>
+</head>
+<body>
+    <script>
+        let n = parseInt(prompt("Introduce un número entero 'n':", ""));
+
+        if (isNaN(n) || n <= 0) {
+            alert("Por favor, introduce un número entero positivo.");
+        } else {
+            let suma = 0;
+            
+            // Suma iterativa
+            for (let i = 1; i <= n; i++) {
+                suma += i;
+            }
+            
+            // Opcional: Suma con la fórmula de Gauss: n * (n + 1) / 2
+            // let sumaFormula = n * (n + 1) / 2; 
+
+            alert(`La suma de todos los números entre 1 y ${n} es: ${suma}`);
+        }
+    </script>
+</body>
+</html>

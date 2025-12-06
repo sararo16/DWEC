@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Ejercicio 17. incrementar y decrementatr. </title>
+</head>
+
+<body>
+    <script>
+        let num1,num2;
+
+       do{
+        num1= parseInt(prompt("Introduce el primer número (debe ser < 50):", "0"));
+        num2=parseInt(prompt("Introduce el segundo número (debe ser < 50):", "0"));
+      if (num1>=50||num2>=50){
+        alert ("Error: Ambos numeros deben de ser menores de 50. Intentelo de nuevo");
+          }
+    }
+    while (num1>=50||num2>=50);
+        let menor, mayor;
+
+        if (num1 < num2) {
+            menor = num1;
+            mayor = num2;
+        } else {
+            menor = num2;
+            mayor = num1;
+        }
+       document.write("<strong>Inicio:</strong> Menor = " + menor + ", Mayor = " + mayor + "<br><hr>");
+
+       while (menor < mayor) {
+            
+            // Incrementamos el pequeño de 5 en 5 [cite: 11]
+            menor += 5; // Equivalente a: menor = menor + 5;
+            
+            // Decrementamos el grande de 2 en 2 [cite: 11]
+            mayor -= 2; // Equivalente a: mayor = mayor - 2;
+
+            // Imprimimos el estado actual
+            document.write("Menor (sube): " + menor + " --- Mayor (baja): " + mayor + "<br>");
+        }
+
+        document.write("<hr><strong>¡Se han cruzado!</strong>");
+    </script>
+</body>
+</html>

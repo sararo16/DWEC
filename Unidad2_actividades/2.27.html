@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.27: Validar Fecha</title>
+</head>
+<body>
+    <script>
+        let dia = parseInt(prompt("Introduce el día:", ""));
+        let mes = parseInt(prompt("Introduce el mes:", ""));
+        let anio = parseInt(prompt("Introduce el año:", ""));
+
+        // Función para verificar si un año es bisiesto
+        function esBisiesto(year) {
+            // Un año es bisiesto si es divisible por 4
+            // excepto si acaba en 00 (divisible por 100)
+            // en cuyo caso es bisiesto sólo si es divisible por 400
+            return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+        }
+
+        function validarFecha(d, m, a) {
+            if (isNaN(d) || isNaN(m) || isNaN(a) || d < 1 || m < 1 || m > 12) {
+                return false;
+            }
+
+            let diasEnMes;
+
+            if (m === 2) { // Febrero
+                diasEnMes = esBisiesto(a) ? 29 : 28;
+            } else if (m === 4 || m === 6 || m === 9 || m === 11) { // Meses con 30 días
+                diasEnMes = 30;
+            } else { // Meses con 31 días
+                diasEnMes = 31;
+            }
+
+            return d <= diasEnMes;
+        }
+
+        if (validarFecha(dia, mes, anio)) {
+            let bisiesto = esBisiesto(anio) ? "SÍ es bisiesto" : "NO es bisiesto";
+            alert(`La fecha ${dia}/${mes}/${anio} es CORRECTA.\nEl año ${anio} ${bisiesto}.`);
+        } else {
+            alert(`La fecha ${dia}/${mes}/${anio} es INCORRECTA.`);
+        }
+    </script>
+</body>
+</html>

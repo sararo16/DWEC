@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.52: Conversión a Base Genérica</title>
+</head>
+<body>
+    <script>
+        // Función para convertir a la base deseada 
+        function convertirBase(numero, base) {
+            // Validar si el número puede ser convertido
+            if (isNaN(numero) || base < 2 || base > 36) {
+                return "Base o número inválido";
+            }
+            // El método .toString(base) convierte el número a la base especificada.
+            return numero.toString(base).toUpperCase();
+        }
+
+        let numeroEntero = parseInt(prompt("Introduce un número entero (base 10):", "")); // 
+        let baseDeseada = parseInt(prompt("Introduce la base deseada (ej: 2, 8, 16):", "")); // 
+
+        let resultado = convertirBase(numeroEntero, baseDeseada);
+        
+        alert(`El número ${numeroEntero} en base ${baseDeseada} es: ${resultado}`);
+    </script>
+</body>
+</html>

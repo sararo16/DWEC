@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.30: Master Mind</title>
+</head>
+<body>
+    <script>
+        const MAX_INTENTOS = 8;
+        let intentosRestantes = MAX_INTENTOS;
+        let combinacionSecreta;
+
+        // 1. Pedir la combinación secreta
+        function pedirCombinacionSecreta() {
+            let input = prompt("Jugador 1: Introduce la combinación secreta de 4 dígitos (ej: 5312):", "");
+            // Simplificación: Asegurar que es un string de 4 caracteres
+            if (input && input.length === 4 && !isNaN(input)) {
+                combinacionSecreta = input.split('').map(Number);
+                alert("Combinación secreta registrada. ¡Jugador 2, a adivinar!");
+                return true;
+            } else {
+                alert("Combinación inválida. Debe ser exactamente 4 dígitos.");
+                return false;
+            }
+        }
+
+        function jugarMasterMind() {
+            if (!pedirCombinacionSecreta()) return;
+
+            while (intentosRestantes > 0) {
+                let intento = prompt(`Intento #${MAX_INTENTOS - intentosRestantes + 1} de ${MAX_INTENTOS}. Ingresa tu intento de 4 dígitos:`, "");
+                
+                if (!intento || intento.length !== 4 || isNaN(intento)) {
+                    alert("Intento inválido. Debe ser 4 dígitos.");
+                    continue;
+                }
+
+                let intentoArr = intento.split('').map(Number);
+                
+                // 2. Inicializar contadores
+                let muertos = 0; // Coincide en valor y posición [cite: 910]
+                let heridos = 0; // Coincide en valor, pero no en posición [cite: 911]
+                
+                // Usamos copias de los arrays para evitar contar heridos dos veces
+                let secretoCopia = [...combinacionSecreta];
+                let intentoCopia = [...intentoArr];
+
+                // 3. Calcular Muertos (Valor y Posición)
+                for (let i = 0; i < 4; i++) {
+                    if (intentoArr[i] === combinacionSecreta[i]) {
+                        muertos++;
+                        // Marcar como usados para que no interfieran en el cálculo de Heridos
+                        secretoCopia[i] = -1; 
+                        intentoCopia[i] = -2;
+                    }
+                }
+
+                // 4. Calcular Heridos (Solo Valor)
+                for (let i = 0; i < 4; i++) {
+                    if (intentoCopia[i] !== -2) { // Si no fue contado como Muerto
+                        let indexEnSecreto = secretoCopia.indexOf(intentoCopia[i]);
+                        if (indexEnSecreto !== -1) {
+                            heridos++;
+                            secretoCopia[indexEnSecreto] = -1; // Marcar como usado en el secreto
+                        }
+                    }
+                }
+
+                // 5. Verificar y Reportar
+                if (muertos === 4) {
+                    alert(`¡Felicidades! Adivinaste la combinación: ${combinacionSecreta.join('')}.`);
+                    break;
+                }
+
+                intentosRestantes--;
+                alert(`Resultado: ${muertos} Muertos y ${heridos} Heridos.\nIntentos restantes: ${intentosRestantes}`);
+            }
+
+            // 6. Fin del Juego
+            if (muertos !== 4) {
+                alert(`Game Over. Se acabaron los ${MAX_INTENTOS} intentos. La combinación secreta era: ${combinacionSecreta.join('')}`);
+            }
+        }
+
+        jugarMasterMind();
+    </script>
+</body>
+</html>

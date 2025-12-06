@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.23: Contar Pares</title>
+</head>
+<body>
+    <script>
+        let num1 = parseInt(prompt("Introduce el primer número entero:", ""));
+        let num2 = parseInt(prompt("Introduce el segundo número entero:", ""));
+        let contadorPares = 0;
+        let inicio, fin;
+
+        // Asegurarse de que 'inicio' sea el número más pequeño y 'fin' el más grande
+        if (num1 < num2) {
+            inicio = num1;
+            fin = num2;
+        } else {
+            inicio = num2;
+            fin = num1;
+        }
+
+        // El bucle recorre todos los números, excluyendo los números de inicio y fin si es necesario
+        // Pero en este caso, se asume que se busca en el rango [inicio, fin].
+        for (let i = inicio; i <= fin; i++) {
+            // Un número es par si su módulo (resto de la división) por 2 es 0
+            if (i % 2 === 0) {
+                contadorPares++;
+            }
+        }
+
+        alert(`Entre ${num1} y ${num2}, hay ${contadorPares} números pares (incluyendo los extremos).`);
+    </script>
+</body>
+</html>

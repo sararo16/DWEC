@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.40: Do...While Incremento 3</title>
+</head>
+<body>
+    <script>
+        let salida = "<h1>Números del 1 al 25 con incremento de 3 (Do...While):</h1>";
+        let contadorLinea = 0;
+        let lineaActual = "";
+        let i = 1; // Iniciar en 1
+
+        do {
+            lineaActual += i + ", ";
+            contadorLinea++;
+
+            // Escribir 4 números en cada línea 
+            if (contadorLinea === 4) {
+                salida += lineaActual + "<br>";
+                lineaActual = "";
+                contadorLinea = 0;
+            }
+            
+            i += 3; // Incrementar en 3
+            
+        } while (i <= 25); // 
+        
+        // Escribir la última línea si no estaba completa
+        if (lineaActual !== "") {
+            salida += lineaActual;
+        }
+
+        document.write(salida);
+    </script>
+</body>
+</html>

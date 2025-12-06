@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Ejercicio 12:cuadrado de asteriscos</title>
+    </head>
+
+    <body>
+        <script>
+            let n=parseInt(prompt ("Introduce el tamaño del cuadrado:",""));
+
+            // 2. Bucle EXTERNO: Controla las FILAS (Altura)
+            for (let i=0;i<n;i++){
+                // 3. Bucle INTERNO: Controla las COLUMNAS (Anchura)
+                for (let j=0;j<n;j++){
+                    document.write ("*");
+                }
+                document.write("<br>");
+            }
+        </script>
+    </body>
+</html>

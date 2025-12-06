@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.36: División por Restas</title>
+</head>
+<body>
+    <script>
+        let dividendo = parseInt(prompt("Introduce el dividendo:", ""));
+        let divisor = parseInt(prompt("Introduce el divisor:", ""));
+
+        if (isNaN(dividendo) || isNaN(divisor)) {
+            alert("Por favor, introduce dos números enteros válidos.");
+        } else if (divisor === 0) {
+            alert("ERROR: El divisor no puede ser cero.");
+        } else {
+            let cociente = 0;
+            let resto = Math.abs(dividendo);
+            let absDivisor = Math.abs(divisor);
+            
+            // Realizar restas sucesivas del divisor al resto
+            while (resto >= absDivisor) {
+                resto -= absDivisor;
+                cociente++;
+            }
+
+            // Ajustar el signo del cociente
+            let signoCociente = ((dividendo < 0 && divisor > 0) || (dividendo > 0 && divisor < 0)) ? -1 : 1;
+            let cocienteFinal = cociente * signoCociente;
+
+            alert(`División de ${dividendo} / ${divisor} (Restas Sucesivas):\nCociente: ${cocienteFinal}\nResto: ${resto}`);
+        }
+    </script>
+</body>
+</html>

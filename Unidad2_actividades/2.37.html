@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.37: Costo Total de Cena</title>
+</head>
+<body>
+    <script>
+        const PRECIO_COSTILLA = 23; // [cite: 950]
+        const PRECIO_PESCADO = 15; // [cite: 951]
+        const PRECIO_POSTRE = 3;   // [cite: 952]
+        const PROPINA_PORCENTAJE = 0.06; // 6% 
+        let costoPlato = 0;
+        let costoTotal = 0;
+        
+        // 1. Preguntar el plato usando prompt [cite: 949]
+        let opcionPlato = prompt(
+            "Selecciona tu plato:\n" +
+            "Pulse 1 si desea cenar Costilla (23 €)\n" + // [cite: 943, 950]
+            "Pulse 2 si desea cenar Pescado (15 €)", // [cite: 944, 951]
+            ""
+        );
+
+        // Determinar costo del plato
+        if (opcionPlato === '1') {
+            costoPlato = PRECIO_COSTILLA;
+        } else if (opcionPlato === '2') {
+            costoPlato = PRECIO_PESCADO;
+        } else {
+            alert("Opción de plato inválida. Terminando programa.");
+            return;
+        }
+
+        costoTotal = costoPlato;
+
+        // 2. Preguntar por el postre usando confirm [cite: 945, 949]
+        let deseaPostre = confirm("¿Desea tomar postre (3 €)?"); // [cite: 952]
+
+        if (deseaPostre) {
+            costoTotal += PRECIO_POSTRE;
+        }
+
+        // 3. Calcular propina e importe final 
+        let propina = costoTotal * PROPINA_PORCENTAJE;
+        let importeFinal = costoTotal + propina;
+
+        let resumen = `--- Resumen de la Cena ---\n`;
+        resumen += `Costo del plato: ${costoPlato.toFixed(2)} €\n`;
+        resumen += `Costo del postre: ${deseaPostre ? PRECIO_POSTRE.toFixed(2) + " €" : "0.00 €"}\n`;
+        resumen += `Subtotal: ${costoTotal.toFixed(2)} €\n`;
+        resumen += `Propina (6%): ${propina.toFixed(2)} €\n`;
+        resumen += `IMPORTE TOTAL A PAGAR: ${importeFinal.toFixed(2)} €`;
+
+        alert(resumen);
+    </script>
+</body>
+</html>

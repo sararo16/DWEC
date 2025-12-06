@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.50: Decimal a Hexadecimal</title>
+</head>
+<body>
+    <script>
+        let numeroDecimal = parseInt(prompt("Introduce un número entero (base 10) para convertir a Hexadecimal (base 16):", ""));
+
+        if (isNaN(numeroDecimal)) {
+            alert("Por favor, introduce un número entero válido.");
+        } else {
+            // El método .toString(base) convierte el número a la base especificada.
+            let numeroHex = numeroDecimal.toString(16).toUpperCase(); 
+            
+            alert(`El número ${numeroDecimal} en base 16 (Hexadecimal) es: ${numeroHex}`);
+        }
+    </script>
+</body>
+</html>

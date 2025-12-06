@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2.49: Suma Pares e Impares</title>
+</head>
+<body>
+    <script>
+        let sumaPares = 0;
+        let sumaImpares = 0;
+        
+        // Un solo bucle 
+        for (let i = 1; i <= 200; i++) {
+            if (i % 2 === 0) {
+                sumaPares += i;
+            } else {
+                sumaImpares += i;
+            }
+        }
+        
+        let salida = "<h1>Suma de Pares e Impares (1 a 200):</h1>";
+        salida += `Suma total de números pares: ${sumaPares}<br>`;
+        salida += `Suma total de números impares: ${sumaImpares}`;
+
+        document.write(salida);
+    </script>
+</body>
+</html>
