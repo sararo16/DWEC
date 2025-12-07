@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 16 - Gestión Separada</title>
+    <style>
+        /* Un poco de CSS básico para que no se vea feo */
+        body { font-family: sans-serif; padding: 20px; background-color: #f4f4f4; }
+        .panel { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; }
+        input { padding: 5px; margin: 5px; }
+        button { padding: 5px 10px; cursor: pointer; background-color: #007bff; color: white; border: none; }
+        #pantalla { background: #222; color: #0f0; padding: 10px; height: 200px; overflow-y: scroll; margin-top: 10px;}
+    </style>
+</head>
+<body>
+
+    <h1>Gestión de Personas</h1>
+
+    <div class="panel">
+        <h3>Alta de Usuario</h3>
+        <input type="text" id="inpUsuario" placeholder="Usuario">
+        <input type="text" id="inpClave" placeholder="Clave">
+        <input type="text" id="inpPregunta" placeholder="Pregunta">
+        <input type="text" id="inpRespuesta" placeholder="Respuesta">
+        <button onclick="btnAlta()">Crear</button>
+    </div>
+
+    <div class="panel">
+        <input type="text" id="inpBusqueda" placeholder="Usuario a buscar/borrar">
+        <button onclick="btnConsultar()">Consultar</button>
+        <button onclick="btnBaja()" style="background-color: red;">Borrar</button>
+        <button onclick="btnListar()" style="background-color: green;">Ver Todos</button>
+    </div>
+
+    <div id="pantalla"></div>
+
+    <script src="ejercicio16.js"></script>
+
+</body>
+</html>

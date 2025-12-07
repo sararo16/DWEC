@@ -1,0 +1,39 @@
+<!DOCTYPE html> 
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 29: dar vuelta a un array</title>
+        <style>
+            body { font-family: sans-serif; padding: 20px; }
+            .caja { border: 1px solid #ccc; padding: 10px; margin-top: 10px; background: #f9f9f9; }
+            button { padding: 8px 15px; cursor: pointer; background: #007bff; color: white; border: none; margin-top: 10px; }
+        </style>
+    </head>
+
+    <body>
+        <h3>Ejercicio 29:invertir un array</h3>
+       <div class="caja">
+        <p><b>Array :</b> [1,5,8,9,16,3]</p>
+
+        <button onclick="InvertirArray()">Invertir</button>
+        
+        <p><b>Resultado:</b></p>
+        <p id="resultado">...</p>
+    </div>
+    <script>
+        function InvertirArray(){
+            //degfinimos el array
+            let array=[1,5,8,9,16,3];
+
+            //usamos reverse para darle la vuelta
+            array.reverse();
+
+            //mostramos los resultados
+            document.getElementById("resultado").innerHTML= array.join(" - ");
+        }
+            
+        
+    </script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html> 
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 7: Comprobar caracter </title>
+    </head>
+
+    <body>
+        <h3>Introduce un caracter para comprobar si es alfabetico</h3>
+        <input type="text" id="dato" maxlength="1"> 
+        <button onclick="gestionValidacion()">Comprobar</button>
+        <p id="resultado"></p>
+
+        <script>
+        //funcion principal recibe un caracter y devuelve true si es letra
+        function esAlfabetico(caracter) {
+            
+            //patron /^[a-zA-ZñÑ]$/:
+            // ^ y $ -> Aseguran que sea solo UN caracter.
+            // a-z -> Letras minúsculas.
+            // A-Z -> Letras mayúsculas.
+            // ñÑ -> Incluimos la eñe por ser español.
+            const patron= /^[a-zA-ZñÑ]$/;
+
+            //.test() para comprobar si cumple el patron
+            return patron.test(caracter);   
+        }
+        //depura y llama a la otra
+        function gestionValidacion(){
+            let entrada=document.getElementById("dato").value;
+
+            //comprobacion hay algo escrito
+            if (entrada.lenght===0){
+                alert ("Por favor, introduce un caracter");
+                return;
+            }
+
+            //llamamos a la funcion de comprobacion
+            if (esAlfabetico(entrada)){
+                //si es true es letra
+                document.getElementById("resultado").innerHTML="Correcto: "+entrada+" es una letra.";
+
+            }else{
+                //si es falso menssaje de alerta
+                alert ("error: el caracter instroducido NO es una letra alfabetica");
+                document.getElementById("resultado").innerHTML=""; //limpiamos el resultado
+            }
+        }
+        </script>
+    </body>
+</html>

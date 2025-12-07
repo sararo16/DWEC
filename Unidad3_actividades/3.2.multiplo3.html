@@ -1,0 +1,33 @@
+<!DOCTYPE html> 
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 2: multiplo 3</title>
+    </head>
+    <body>
+        <h3>Introduce un numero para comprobar si es multiplo de 3</h3>
+        <label for="numero">Numero</label>
+        <input type="number" id="num">
+        <button onclick="multiploTres()">¿es mutiplo de 3?</button>
+        <p id="resultado"></p>
+
+
+        <script>
+         function multiploTres(){
+            // 1. Obtenemos el valor del input
+            let num=document.getElementById("num").value;
+            // Validación básica: Si está vacío, no hacemos nada
+            let mensajeTexto="";
+            if (num %3==0){
+                    mensajeTexto="El numero "+num+ " SÍ es multiplo de 3";
+
+                }else{
+                    mensajeTexto="El numero "+num+ " NO es multiplo de 3";
+
+                }
+            document.getElementById("resultado").innerHTML=mensajeTexto;
+             }
+        </script>
+    </body>
+</html>

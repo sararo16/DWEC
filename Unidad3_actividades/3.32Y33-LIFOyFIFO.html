@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h3>Ej 32 (Pila LIFO) y 33 (Cola FIFO)</h3>
+    
+    <div style="border:1px solid black; padding:10px; margin-bottom:10px;">
+        <b>Pila (LIFO):</b> <span id="pilaDisplay"></span><br>
+        <button onclick="pushPila()">Push (Añadir)</button>
+        <button onclick="popPila()">POP (Sacar último)</button>
+    </div>
+
+    <div style="border:1px solid black; padding:10px;">
+        <b>Cola (FIFO):</b> <span id="colaDisplay"></span><br>
+        <button onclick="pushCola()">Push (Añadir)</button>
+        <button onclick="shiftCola()">SHIFT (Sacar primero)</button>
+    </div>
+
+    <script>
+        let pila = [];
+        let cola = [];
+        let contador = 1;
+
+        // --- LIFO ---
+        function pushPila() {
+            pila.push(contador++);
+            actualizar();
+        }
+        function popPila() {
+            pila.pop(); // Elimina el último
+            actualizar();
+        }
+
+        // --- FIFO ---
+        function pushCola() {
+            cola.push(contador++);
+            actualizar();
+        }
+        function shiftCola() {
+            cola.shift(); // Elimina el primero
+            actualizar();
+        }
+
+        function actualizar() {
+            document.getElementById("pilaDisplay").innerText = JSON.stringify(pila);
+            document.getElementById("colaDisplay").innerText = JSON.stringify(cola);
+        }
+    </script>
+</body>
+</html>

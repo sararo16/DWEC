@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Examen: Biblioteca Completa</title>
+    <style>
+        /* ESTILOS CSS BÁSICOS */
+        body { font-family: sans-serif; padding: 20px; background-color: #f9f9f9; }
+        
+        /* Cajas para organizar la pantalla */
+        .panel { 
+            background: white; 
+            padding: 20px; 
+            border: 1px solid #ccc; 
+            border-radius: 8px; 
+            margin-bottom: 20px; 
+        }
+
+        /* Estilos de la tabla */
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; background: white; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #2c3e50; color: white; }
+
+        /* --- CLASES DINÁMICAS (Temario Unidad 4: Modificación de aspecto) --- */
+        /* Estas clases se aplicarán con JS según el estado del libro */
+        .estado-disponible { 
+            background-color: #d4edda; /* Verde claro */
+            color: #155724; 
+        }
+        .estado-prestado { 
+            background-color: #f8d7da; /* Rojo claro */
+            color: #721c24; 
+            text-decoration: line-through; /* Tachado */
+        }
+
+        /* Botones */
+        input { padding: 8px; width: 30%; margin-right: 10px; }
+        button { cursor: pointer; padding: 5px 10px; color: white; border: none; border-radius: 3px; }
+        .btn-azul { background-color: #007bff; width: 100%; padding: 10px; margin-top: 10px;}
+        .btn-rojo { background-color: #dc3545; }
+        .btn-amarillo { background-color: #ffc107; color: black; }
+
+    </style>
+</head>
+<body>
+
+    <h1>📚 Gestión de Biblioteca (Examen Final)</h1>
+
+    <div class="panel">
+        <h3>Nuevo Libro</h3>
+        <form id="formBiblioteca">
+            <input type="text" id="titulo" placeholder="Título del libro" required>
+            <input type="text" id="autor" placeholder="Autor" required>
+            <input type="number" id="paginas" placeholder="Nº Páginas" required>
+            
+            <button type="submit" class="btn-azul">Añadir a la Biblioteca</button>
+        </form>
+    </div>
+
+    <div class="panel">
+        <h3>Listado de Libros</h3>
+        <p>Total libros: <b id="totalLibros">0</b> | Total Páginas: <b id="totalPaginas">0</b></p>
+        
+        <table id="tablaLibros">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Páginas</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTabla"></tbody>
+        </table>
+    </div>
+
+    <script>
+        // ==========================================
+        // 1. EL MODELO DE DATOS (CLASE)
+        // ==========================================
+        class Libro {
+            constructor(titulo, autor, paginas) {
+                this.titulo = titulo;
+                this.autor = autor;
+                // ParseInt es vital: convierte el texto "100" en el número 100 para poder sumar
+                this.paginas = parseInt(paginas); 
+                // Propiedad de estado: False = Disponible, True = Prestado
+                this.prestado = false; 
+            }
+        }
+
+        // ==========================================
+        // 2. CARGA DE DATOS (LOCALSTORAGE - Unidad 4)
+        // ==========================================
+        // Intentamos leer datos antiguos.
+        // localStorage.getItem("misLibros") devuelve un TEXTO largo.
+        // JSON.parse lo convierte otra vez en un ARRAY de objetos.
+        // El "|| []" significa: "Si no hay nada guardado (es null), empieza con un array vacío".
+        let biblioteca = JSON.parse(localStorage.getItem("misLibros")) || [];
+
+        // ==========================================
+        // 3. FUNCIÓN MAESTRA: PINTAR (RENDER)
+        // ==========================================
+        function actualizarVista() {
+            // A. Localizamos la tabla en el HTML
+            let tbody = document.getElementById("cuerpoTabla");
+            
+            // B. ¡IMPORTANTE! Limpiamos la tabla antes de volver a pintar.
+            // Si no hacemos esto, los libros se duplicarían cada vez que añadimos uno nuevo.
+            tbody.innerHTML = ""; 
+
+            // Variables para calcular estadísticas
+            let sumaPaginas = 0;
+
+            // C. Bucle para recorrer el Array (Unidad 3: Arrays)
+            biblioteca.forEach((libro, indice) => {
+                
+                // Acumulamos páginas para la estadística
+                sumaPaginas += libro.paginas;
+
+                // D. Lógica de Clases Dinámicas (Unidad 4)
+                // Usamos un operador ternario (if corto) para decidir el color.
+                // Si libro.prestado es true, clase roja. Si no, clase verde.
+                let claseFila = libro.prestado ? "estado-prestado" : "estado-disponible";
+                let textoEstado = libro.prestado ? "Prestado" : "Disponible";
+                let textoBoton = libro.prestado ? "Devolver" : "Prestar";
+
+                // E. Generación de HTML (Template Strings)
+                // Creamos la fila <tr> con las variables dentro ${...}
+                let filaHTML = `
+                    <tr class="${claseFila}">
+                        <td><b>${libro.titulo}</b></td>
+                        <td>${libro.autor}</td>
+                        <td>${libro.paginas}</td>
+                        <td>${textoEstado}</td>
+                        <td>
+                            <button class="btn-amarillo" onclick="cambiarEstado(${indice})">
+                                ${textoBoton}
+                            </button>
+                            
+                            <button class="btn-rojo" onclick="eliminarLibro(${indice})">
+                                Eliminar
+                            </button>
+                        </td>
+                    </tr>
+                `;
+
+                // F. Insertamos la fila en la tabla
+                tbody.innerHTML += filaHTML;
+            });
+
+            // G. Actualizamos los contadores de arriba
+            document.getElementById("totalLibros").innerText = biblioteca.length;
+            document.getElementById("totalPaginas").innerText = sumaPaginas;
+        }
+
+        // ==========================================
+        // 4. PERSISTENCIA (GUARDAR)
+        // ==========================================
+        function guardarDatos() {
+            // Convierte el array 'biblioteca' en un texto plano (JSON) para que el navegador lo guarde.
+            localStorage.setItem("misLibros", JSON.stringify(biblioteca));
+            
+            // Cada vez que guardamos, repintamos la pantalla para ver los cambios.
+            actualizarVista();
+        }
+
+        // ==========================================
+        // 5. EVENTOS (CONTROLES)
+        // ==========================================
+
+        // A) EVENTO AÑADIR (Submit del formulario)
+        document.getElementById("formBiblioteca").addEventListener("submit", function(e) {
+            // e.preventDefault() evita que la página se recargue sola al enviar.
+            e.preventDefault(); 
+
+            // 1. Capturamos valores de los inputs
+            let tit = document.getElementById("titulo").value;
+            let aut = document.getElementById("autor").value;
+            let pag = document.getElementById("paginas").value;
+
+            // 2. Creamos el objeto nuevo
+            let nuevoLibro = new Libro(tit, aut, pag);
+
+            // 3. Lo metemos en el array (push)
+            biblioteca.push(nuevoLibro);
+
+            // 4. Guardamos en LocalStorage y actualizamos tabla
+            guardarDatos();
+
+            // 5. Borramos lo que el usuario escribió en los inputs
+            this.reset();
+        });
+
+        // B) FUNCIÓN ELIMINAR
+        // Recibe el 'indice' (posición en el array) desde el botón HTML
+        function eliminarLibro(indice) {
+            if(confirm("¿Seguro que quieres borrar este libro?")) {
+                // .splice(posicion, cantidad) -> Borra 1 elemento en esa posición
+                biblioteca.splice(indice, 1);
+                guardarDatos();
+            }
+        }
+
+        // C) FUNCIÓN CAMBIAR ESTADO (MODIFICAR)
+        // Recibe el 'indice' para saber qué libro modificar
+        function cambiarEstado(indice) {
+            // Invertimos el valor booleano (si era true pasa a false, y viceversa)
+            // El símbolo '!' significa NOT (lo contrario)
+            biblioteca[indice].prestado = !biblioteca[indice].prestado;
+            
+            // Guardamos para que el cambio de color se mantenga
+            guardarDatos();
+        }
+
+        // ==========================================
+        // 6. INICIALIZACIÓN
+        // ==========================================
+        // Llamamos a actualizarVista() nada más cargar la página.
+        // Si había datos en LocalStorage, los pintará. Si no, saldrá vacío.
+        actualizarVista();
+
+    </script>
+</body>
+</html>

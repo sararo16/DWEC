@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h3>Ejercicio 34: Analizar frase</h3>
+    <input type="text" id="fraseInput" value="Hola mundo desde Javascript" style="width:300px">
+    <button onclick="analizarTexto()">Analizar en Popup</button>
+
+    <script>
+        function analizarTexto() {
+            let frase = document.getElementById("fraseInput").value;
+            // Generar array con split
+            let palabras = frase.split(" "); // Separa por espacios
+
+            // Preparar datos
+            let numPalabras = palabras.length;
+            let primera = palabras[0];
+            let ultima = palabras[palabras.length - 1];
+            
+            // Copias para no modificar el original al ordenar
+            let inverso = [...palabras].reverse().join(", ");
+            let ordenAZ = [...palabras].sort().join(", ");
+            let ordenZA = [...palabras].sort().reverse().join(", ");
+
+            // Abrir ventana nueva
+            let nuevaVentana = window.open("", "Analisis", "width=400,height=400");
+            nuevaVentana.document.write(`
+                <h2>Resultados:</h2>
+                <p><b>Número de palabras:</b> ${numPalabras}</p>
+                <p><b>Primera palabra:</b> ${primera}</p>
+                <p><b>Última palabra:</b> ${ultima}</p>
+                <p><b>Orden inverso:</b> ${inverso}</p>
+                <p><b>Orden A-Z:</b> ${ordenAZ}</p>
+                <p><b>Orden Z-A:</b> ${ordenZA}</p>
+            `);
+        }
+    </script>
+</body>
+</html>

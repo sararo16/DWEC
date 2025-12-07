@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 35: Gestión Completa</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .panel { border: 1px solid #ccc; padding: 15px; background: #f4f4f4; margin-bottom: 15px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #007bff; color: white; }
+        button { cursor: pointer; padding: 5px 10px; margin-right: 5px; }
+        input { padding: 5px; margin-right: 5px; width: 80px; }
+        .btn-red { background-color: #dc3545; color: white; border: none; }
+    </style>
+</head>
+<body>
+
+    <h3>Ejercicio 35: Gestión de Alumnos (Array de Arrays)</h3>
+
+    <div class="panel">
+        <h4>a) Añadir Nuevo Alumno</h4>
+        <input type="text" id="nombre" placeholder="Nombre">
+        <input type="number" id="nota1" placeholder="Nota 1">
+        <input type="number" id="nota2" placeholder="Nota 2">
+        <input type="number" id="nota3" placeholder="Nota 3">
+        <button onclick="anadirAlumno()">Añadir</button>
+    </div>
+
+    <div class="panel">
+        <h4>Operaciones</h4>
+        <button onclick="calcularMedias()">b) Calcular Medias</button>
+        
+        <button onclick="ordenarPorNombre()">c) Ordenar por Nombre</button>
+        <button onclick="ordenarPorMedia()">c) Ordenar por Media</button>
+    </div>
+
+    <div id="contenedorTabla"></div>
+
+    <script>
+        // 1. Datos iniciales según el enunciado
+        var alumno1 = ["Pepe", 5, 6, 6.5];
+        var alumno2 = ["Luis", 4, 7, 7];
+        var alumno3 = ["Pedro", 8, 4.5, 3];
+        
+        // Array de arrays principal
+        var Alumnos = [alumno1, alumno2, alumno3];
+
+        // Variable de control para saber si ya hemos calculado la media (para evitar añadirla 2 veces)
+        var mediasCalculadas = false;
+
+        // --- FUNCIÓN PARA MOSTRAR TABLA (ACTUALIZAR VISTA) ---
+        function mostrarTabla() {
+            let html = `<table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Nota 1</th>
+                                <th>Nota 2</th>
+                                <th>Nota 3</th>
+                                <th>Media</th>
+                                <th>Acción (Eliminar)</th>
+                            </tr>
+                        </thead>
+                        <tbody>`;
+            
+            // Recorremos el array Alumnos
+            for(let i = 0; i < Alumnos.length; i++) {
+                // Cada "alumno" es un array: [Nombre, n1, n2, n3, media(opcional)]
+                let datos = Alumnos[i];
+                let mediaTexto = datos[4] !== undefined ? datos[4] : "-"; // Si existe la pos 4 la muestra
+
+                html += `<tr>
+                            <td>${datos[0]}</td>
+                            <td>${datos[1]}</td>
+                            <td>${datos[2]}</td>
+                            <td>${datos[3]}</td>
+                            <td><b>${mediaTexto}</b></td>
+                            <td>
+                                <button class="btn-red" onclick="eliminarAlumno(${i})">X</button>
+                            </td>
+                         </tr>`;
+            }
+
+            html += "</tbody></table>";
+            document.getElementById("contenedorTabla").innerHTML = html;
+        }
+
+        // --- PARTE A: AÑADIR ALUMNO ---
+        function anadirAlumno() {
+            let n = document.getElementById("nombre").value;
+            let n1 = parseFloat(document.getElementById("nota1").value);
+            let n2 = parseFloat(document.getElementById("nota2").value);
+            let n3 = parseFloat(document.getElementById("nota3").value);
+
+            if (n && !isNaN(n1)) {
+                // Creamos el nuevo array de alumno
+                let nuevoAlumno = [n, n1, n2, n3];
+                
+                // Si las medias ya estaban calculadas en la tabla, calculamos la de este nuevo también
+                if (mediasCalculadas) {
+                     let media = ((n1 + n2 + n3) / 3).toFixed(2);
+                     nuevoAlumno.push(media);
+                }
+
+                Alumnos.push(nuevoAlumno);
+                mostrarTabla();
+                
+                // Limpiar inputs
+                document.getElementById("nombre").value = "";
+                document.getElementById("nota1").value = "";
+                document.getElementById("nota2").value = "";
+                document.getElementById("nota3").value = "";
+            } else {
+                alert("Por favor rellena nombre y notas.");
+            }
+        }
+
+        // --- PARTE A: ELIMINAR ALUMNO ---
+        function eliminarAlumno(indice) {
+            // splice(indice, 1) elimina 1 elemento en esa posición
+            Alumnos.splice(indice, 1);
+            mostrarTabla();
+        }
+
+        // --- PARTE B: CALCULAR MEDIAS ---
+        function calcularMedias() {
+            if (mediasCalculadas) {
+                alert("Las medias ya están calculadas.");
+                return;
+            }
+
+            for(let i = 0; i < Alumnos.length; i++) {
+                // Sumamos las posiciones 1, 2 y 3
+                let suma = Alumnos[i][1] + Alumnos[i][2] + Alumnos[i][3];
+                let media = (suma / 3).toFixed(2);
+                
+                // AÑADIMOS la media al final del array de ese alumno (posición 4)
+                Alumnos[i].push(media);
+            }
+            mediasCalculadas = true;
+            mostrarTabla();
+        }
+
+        // --- PARTE C: ORDENAR POR NOMBRE ---
+        function ordenarPorNombre() {
+            Alumnos.sort(function(a, b) {
+                // Comparamos la posición 0 (Nombre)
+                if (a[0] < b[0]) return -1;
+                if (a[0] > b[0]) return 1;
+                return 0;
+            });
+            mostrarTabla();
+        }
+
+        // --- PARTE C: ORDENAR POR MEDIA ---
+        function ordenarPorMedia() {
+            if (!mediasCalculadas) {
+                alert("Primero debes calcular las medias (Botón B).");
+                return;
+            }
+            // Ordenamos por la posición 4 (Media) de mayor a menor
+            Alumnos.sort(function(a, b) {
+                return b[4] - a[4];
+            });
+            mostrarTabla();
+        }
+
+        // Iniciamos mostrando la tabla vacía o con los datos iniciales
+        mostrarTabla();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html> 
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 27: Buscar en Array</title>
+        <style>
+            body { font-family: sans-serif; padding: 20px; }
+            .caja { border: 1px solid #ccc; padding: 10px; margin-top: 10px; background: #f9f9f9; }
+        </style>
+    </head>
+
+    <body>
+        <h3>Ejercicio 27: Buscar elemento en un Array</h3>
+        
+        <p><b>Array actual:</b> ["Madrid", "Barcelona", "Sevilla", "Valencia", "Bilbao"]</p>
+
+        <label for="datoInput">Introduce la ciudad a buscar: </label>
+        <input type="text" id="datoInput" placeholder="Ej: Sevilla">
+        
+        <button onclick="buscarEnArray()">Buscar</button>
+        
+        <div id="resultado" class="caja">
+            El resultado aparecerá aquí...
+        </div>
+        <script>
+            //definimos el array fijo para hacer la prueba
+            const ciudades=["Madrid", "Barcelona", "Sevilla", "Valencia","Bilbao"];
+
+            function buscarEnArray(){
+                //cogemos el valor que ha escrito el usuario
+                let valorBuscado=document.getElementById("datoInput").value;
+
+                //buscar el texto si no esta devuelve -1
+                let posicion=ciudades.indexOf(valorBuscado);
+
+                //mostramos resultado
+                let caja=document.getElementById("resultado");
+
+                if (posicion!==-1){
+                    caja.innerHTML=`¡Encontrado! <b>${valorBuscado}</b> está en la posición <b>${posicion}</b>.`;
+                    caja.style.color = "green";
+                }else{
+                    caja.innerHTML = `Lo siento, <b>${valorBuscado}</b> no existe en el array.`;
+                    caja.style.color = "red";
+                }
+            }
+        </script>
+    </body>
+</html>

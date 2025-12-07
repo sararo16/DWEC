@@ -1,0 +1,67 @@
+<!DOCTYPE html> 
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 8: Comparar Caracteres</title>
+    </head>
+
+    <body>
+        <h3>Introduce dos caracteres para comprobar si son alfabéticos y cuál es mayor</h3>
+        <label>Carácter 1:</label>
+        <input type="text" id="char1" maxlength="1"> 
+        <br><br>
+        <label>Carácter 2:</label>
+        <input type="text" id="char2" maxlength="1"> 
+        <br><br>
+
+        <button onclick="gestionValidacion()">¿Cuál es mayor?</button>
+        <p id="resultado" style="font-weight: bold; font-size: 1.2em;"></p>
+
+        <script>
+        // Lógica de comparación pura
+        function cualEsMayor(c1, c2) {
+            // JavaScript compara el código ASCII automáticamente
+            if (c1 > c2){
+                return c1; 
+            } else if (c2 > c1){
+                return c2; 
+            } else {
+                return "iguales";
+            }
+        }
+
+        // Gestión formulario y validación
+        function gestionValidacion(){
+            let car1 = document.getElementById("char1").value;
+            let car2 = document.getElementById("char2").value;
+
+            if (car1.length !== 1 || car2.length !== 1){
+                alert("Error: Por favor, introduce UN solo carácter en cada casilla");
+                return;
+            }
+
+            
+            // Si alguno NO cumple el patrón de letras, paramos.
+            const patron = /^[a-zA-ZñÑ]$/;
+            if (!patron.test(car1) || !patron.test(car2)) {
+                alert("Error: Los caracteres deben ser LETRAS (no números ni símbolos).");
+                return;
+            }
+
+            // Llamamos a la función de comparación
+            let mayor = cualEsMayor(car1, car2);
+
+            // Mostramos resultados
+            let texto = "";
+            if (mayor === "iguales"){
+                texto = "Ambos caracteres son iguales";
+            } else {
+                // Template literals, perfecto uso [cite: 157]
+                texto = `El carácter mayor es: '${mayor}'`; 
+            }
+            document.getElementById("resultado").innerHTML = texto;
+        }
+        </script>
+    </body>
+</html>

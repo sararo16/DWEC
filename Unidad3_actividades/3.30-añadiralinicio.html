@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h3>Ejercicio 30: Añadir al inicio (unshift)</h3>
+    <p>Array actual: <span id="e30_array"></span></p>
+    <input type="number" id="e30_input" placeholder="Número">
+    <button onclick="anadirAlInicio()">Añadir al Principio</button>
+<script>
+    let numeros30=[10,20,30];
+
+    //mostrmos inicial
+    document.getElementById("e30_array").innerText=numeros30.join(", ");
+
+    function anadirAlInicio(){
+        let val=document.getElementById("e30_input").value;
+
+        //unshift añade al principio y desplaza alr esto
+        numeros30.unshift(val);
+        document.getElementById("e30_array").innerText=numeros30.join(", ");
+    }
+        </script>   
+    </body>
+</html>
+

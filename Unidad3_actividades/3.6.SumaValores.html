@@ -1,0 +1,43 @@
+<!DOCTYPE html> 
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 6: suma valores </title>
+    </head>
+
+    <body>
+        <h3>Introduce dos numeros para sumarlos</h3>
+        <label for="num1">Número 1: </label>
+        <input type="text" id="num1">
+        <label for="num2">Número 2: </label>
+        <input type="text" id="num2">
+        
+        <button onclick="sumaNumeros()">Suma</button>
+        <p id="resultado"></p>
+
+        <script>
+            function sumaNumeros(){
+
+                //cogemos los numeros
+                let num1=parseFloat(document.getElementById("num1").value);
+                let num2=parseFloat(document.getElementById("num2").value);
+
+                //validacion 
+                if(isNaN (num1)|| isNaN(num2)){
+                    document.getElementsById("resultado".innerHTML="Introduce números válidos");
+                    return;
+                }
+                //creamos lka suma
+                let suma=num1+num2;
+
+                //mostramos el resultado con template strings
+                let resultado = `La suma de ${num1} + ${num2} es ${suma}`;
+                //compartimos el resyultado
+                document.getElementById("resultado").innerHTML=resultado;
+            }
+        </script>
+    </body>
+</html>
+
+

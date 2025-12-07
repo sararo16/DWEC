@@ -1,0 +1,37 @@
+<!DOCTYPE html> 
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ejercicio 12: Fecha</title>
+    </head>
+    <body>
+        <h3>Dias que han pasado desde el fin del mundo Maya </h3>
+        <button onclick="diasFinDelMundo()">Ver datos del fin del mundo</button>
+        <div id="resultado" style="margin-top:20px;"></div>
+        <script>
+            
+
+            function diasFinDelMundo(){
+                let fechaActual=new Date ();
+                let fechaMaya=new Date (2012,10,21);
+                let HanPasado= fechaActual-fechaMaya;
+
+                //redondear
+                let segundosPasados=Math.floor(HanPasado/1000);
+                let diasPasados=Math.floor(HanPasado/(1000*60*60*24));
+
+                //mostrar resultados
+                let mensaje=`
+                    <strong>Fecha actual:</strong> ${fechaActual.toLocaleDateString()} <br>
+                    <strong>Fecha Fin del Mundo Maya:</strong> ${fechaMaya.toLocaleDateString()} <br>
+                    <hr>
+                    Han pasado <strong>${diasPasados}</strong> días desde entonces.<br>
+                    (O lo que es lo mismo: <strong>${segundosPasados}</strong> segundos).
+                `;
+
+                document.getElementById("resultado").innerHTML = mensaje;
+            } 
+               
+        </script>
+    </body>
+</html>

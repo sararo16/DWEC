@@ -1,0 +1,39 @@
+<!DOCTYPE html> 
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 5: Array + factorial</title>
+    </head>
+
+    <body>
+        <h2>Factoriales de los 25 primeros numeros</h2>
+
+        <table border="1" id="tablaFactoriales">
+            <tr>
+                <th>Número</th>
+                <th>Factorial</th>
+            </tr>
+        </table>
+        <script>
+            const factorial = n => n  <= 1 ? 1 : n * factorial(n - 1); // Muestra los factoriales
+           
+            //array vacio
+            let listaFactoriales=[];
+            //llenamos el array
+            for (let i = 1; i <= 25; i++) {
+                let resultado = factorial(i);
+                // Guardamos un objeto con el numero y su factorial
+                listaFactoriales.push({ numero: i, valor: resultado });
+            }
+
+            // 3. Recorremos el Array para generar el HTML
+            let html = "";
+            // Usamos un bucle for of para leer el array
+            for (let item of listaFactoriales) {
+                html += `<tr><td>${item.numero}</td><td>${item.valor}</td></tr>`;
+            }
+
+            document.getElementById("tablaFactoriales").innerHTML += html;
+        </script>
+    </body>

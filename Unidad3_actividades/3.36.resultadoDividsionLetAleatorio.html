@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h3>Ejercicio 36: División Aleatoria</h3>
+    <p>Resuelve: <span id="numA"></span> / <span id="numB"></span></p>
+    <input type="number" id="respUsuario">
+    <button onclick="comprobarRespuesta()">Comprobar</button>
+    <p id="resultado36"></p>
+
+    <script>
+        // Función solicitada en enunciado para obtener aleatorio entre dos valores
+        function obtenerAleatorio(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        let a, b, correcta;
+
+        function generarPregunta() {
+            // Usamos la función para generar numeros entre 1 y 100 y 1 y 10
+            a = obtenerAleatorio(10, 100); 
+            b = obtenerAleatorio(2, 10);
+            // Calculamos la division entera para el ejercicio
+            correcta = Math.floor(a / b);
+            
+            document.getElementById("numA").innerText = a;
+            document.getElementById("numB").innerText = b;
+            document.getElementById("resultado36").innerText = "(División entera)";
+        }
+
+        // Función 1: Recibe respuesta y llama a la comprobación
+        function comprobarRespuesta() {
+            let respuesta = parseInt(document.getElementById("respUsuario").value);
+            let esCorrecto = verificar(respuesta, correcta);
+            
+            if(esCorrecto) {
+                alert("¡Correcto!");
+                generarPregunta(); // Reinicia
+                document.getElementById("respUsuario").value = "";
+            } else {
+                alert("Incorrecto, era " + correcta);
+            }
+        }
+
+        // Función 2: Comprueba si es correcto devuelve true/false
+        function verificar(dado, real) {
+            return dado === real;
+        }
+
+        generarPregunta(); // Iniciar al cargar
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html> 
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 26: Array de futbol y concat </title>
+    </head>
+
+    <body>
+        <h3>Elige el Tamaño de los arrays (Equipos)</h3>
+        <label for="array1">Numero Equipos grupo A: </label>
+        <input type="text" id="array1" placeholder="Ej: 2">
+        <label for="array2">Numero Equipos grupo B: </label>
+        <input type="text" id="array2" placeholder="Ej: 3">
+        <br><br>
+        <button onclick="arrayFutbol()">Introducir nombres y unir</button>
+       <div id="resultado" style="margin-top: 20px; border: 1px solid #333; padding: 10px; background: #f4f4f4;">
+            Aquí saldrá el resultado...
+        </div>
+
+        <script>
+            function arrayFutbol(){
+                //leemos el tamaño que ha puesto el usuaario
+                let tamanoA=parseInt(document.getElementById("array1").value);
+                let tamanoB=parseInt(document.getElementById("array2").value);
+
+                //validacion simple para saber si es un numero
+                if (isNaN(tamanoA)||isNaN(tamanoB)){
+                    alert ("Debe introducir un numero valido");
+                    return;
+                }
+
+                let grupoA=[];
+                let grupoB=[];
+
+                //llenamos el grupo a pidiendo los nombres por el prompt
+                for (let i=0;i<tamanoA;i++){
+                    let nombre=prompt(`GRUPO A: Dime el nombre del equipo ${i + 1}:`);
+                    grupoA.push(nombre);
+                }
+                //ahora el grupo b
+                for (let i=0;i<tamanoB;i++){
+                    let nombre=prompt(`GRUPO B: Dime el nombre del equipo ${i + 1}:`)
+                    grupoB.push(nombre);
+                }
+                //usamos concat para unirlo
+                let ligaCompleta=grupoA.concat(grupoB);
+
+                let cajaResultado =document.getElementById("resultado");
+
+                cajaResultado.innerHTML=`
+                    <b>Grupo A:</b> ${grupoA.join(", ")} <br>
+                    <b>Grupo B:</b> ${grupoB.join(", ")} <br>
+                    <hr>
+                    <b>LIGA COMPLETA (Concatenada):</b> <br>
+                    ${ligaCompleta.join(" - ")}
+                `;
+            }
+        </script>
+    </body>
+</html>
+

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 18 - Coches</title>
+</head>
+<body>
+    <h1>Mis Coches</h1>
+    <ul id="listaCoches"></ul>
+
+    <script src="ejercicio18.js"></script>
+
+
+    <script>
+        const lista=document.getElementById('listaCoches');
+
+        //recorremos el array y creamos puntos en la lista
+        concesionario.forEach(coche => {
+            const item=document.createElement('li');
+            item.innerText= ` ${coche.marca} ${coche.modelo} (${coche.año})`;
+            lista.appendChild(item);
+        });
+    </script>

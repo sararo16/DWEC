@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h3>Ejercicio 31: Palíndromo Recursivo</h3>
+    <input type="text" id="e31_input" placeholder="Ej: reconocer">
+    <button onclick="verificarPalindromo()">Verificar</button>
+    <p id="e31_res"></p>
+
+    <script>
+        function verificarPalindromo() {
+            let texto = document.getElementById("e31_input").value.toLowerCase();
+            let esPalindromo = funcionRecursiva(texto);
+            document.getElementById("e31_res").innerText = esPalindromo ? "✅ Es palíndromo" : "❌ No es palíndromo";
+        }
+
+        function funcionRecursiva(cadena) {
+            // Caso base: si queda 0 o 1 letra, es true
+            if (cadena.length <= 1) return true;
+            // Si la primera y última son distintas, es false
+            if (cadena[0] !== cadena[cadena.length - 1]) return false;
+            // Llamada recursiva: probamos con lo que queda en el medio
+            return funcionRecursiva(cadena.slice(1, -1));
+        }
+    </script>
+</body>
+</html>

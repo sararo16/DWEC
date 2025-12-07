@@ -1,0 +1,51 @@
+<!DOCTYPE html> 
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 28: Multiplicar dos arrays</title>
+        <style>
+            body { font-family: sans-serif; padding: 20px; }
+            .caja { border: 1px solid #ccc; padding: 10px; margin-top: 10px; background: #f9f9f9; }
+            button { padding: 8px 15px; cursor: pointer; background: #007bff; color: white; border: none; margin-top: 10px; }
+        </style>
+    </head>
+
+    <body>
+        <h3>Ejercicio 28:Multiplicar dos arrays enteros</h3>
+       <div class="caja">
+        <p><b>Array 1:</b> [1,5,8,9,16,3]</p>
+        <p><b>Array 2:</b> [6,9,2,3,4,3]</p>
+
+        <button onclick="MultiplicarArray()">Multiplicar</button>
+        
+        <p><b>Resultado:</b></p>
+        <p id="resultado">...</p>
+    </div>
+    <script>
+        function MultiplicarArray(){
+            //definimos los dos arrays del ejemplo
+            const array1=[1,5,8,9,16,3];
+            const array2=[6,9,2,3,4,3];
+
+            //creamos un array vacio para guardar los elementos
+            let arrayFinal=[];
+
+            //bucle para recorrerlo
+            // Usamos array1.length porque asumimos que ambos miden lo mismo       
+            for (let i=0;i<array1.length;i++){
+                //multiplicamos la posicion del primero por la del segundo
+                let calculo=array1[i]*array2[i];
+
+                //guardamos el resyltado en el array final
+                arrayFinal.push(calculo);
+            }
+
+            //mostramos los resultados
+            document.getElementById("resultado").innerHTML=`[ ${arrayFinal.join(" - ")} ]`;
+            
+        }
+    </script>
+    </body>
+</html>
+

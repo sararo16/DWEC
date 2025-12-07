@@ -1,0 +1,52 @@
+<!DOCTYPE html> 
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 9: validar numeros</title>
+    </head>
+
+    <body>
+        <h3>Introduce un dato (solo se aceptan numeros)</h3>
+        <label>Dato:</label>
+        <input type="text" id="datoEntrada"> 
+        <br><br>
+        
+
+        <button onclick="iniciarPrograma()">Validar dato</button>
+        <p id="resultado" style="font-weight: bold; font-size: 1.2em;"></p>
+
+        <script>
+        // Lógica de comparación pura
+        function esNumeroValido(valor) {
+            //comprobar si esta vacio o solo son espacios
+            if (valor.trim()===""){
+                return false;
+            }
+
+            //comprobar si no es un numero
+            if (isNaN (valor)){
+                return false;
+            }
+            return true; //si pasa las validaciones esta bien
+        }
+        // interaccion con la pagina
+        function iniciarPrograma(){
+            let input = document.getElementById("datoEntrada").value;
+            
+            //llamar funicon depuracion
+            if (esNumeroValido(input)){
+                let numero=parseFloat(input);
+                document.getElementById("resultado").style.color="green";
+                document.getElementById("resultado").innerHTML="Coorecto. EL numero validado es: "+numero;
+
+            }else{
+               alert ("Error: el dato introducido NO es un numero valido")
+                document.getElementById("resultado").style.color="red";
+                document.getElementById("resultado").innerHTML="Entrada incorrecta"
+            }
+
+        }
+        </script>
+    </body>
+</html>

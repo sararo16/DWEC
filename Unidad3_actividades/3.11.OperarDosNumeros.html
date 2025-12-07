@@ -1,0 +1,89 @@
+<!DOCTYPE html> 
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ejercicio 11: Calculadora Básica</title>
+    </head>
+    <body>
+        <h3>Calculadora: Introduce dos números y un operador</h3>
+        
+        <label>Número 1:</label>
+        <input type="number" id="num1" style="width: 60px;">
+        <br><br>
+
+        <label>Operador (+, -, *, /):</label>
+        <input type="text" id="operador" maxlength="1" style="width: 30px; text-align: center;">
+        <br><br>
+
+        <label>Número 2:</label>
+        <input type="number" id="num2" style="width: 60px;">
+        <br><br>
+
+        <button onclick="gestionarCalculo()">Calcular</button>
+        <p id="resultado" style="font-weight: bold; font-size: 1.2em;"></p>
+
+        <script>
+            // FUNCIÓN DE CÁLCULO (Lógica pura)
+            function realizarCalculo(n1, n2, op) {
+                let res = 0;
+
+                // Usamos SWITCH para elegir la operación (Más limpio que muchos 'if')
+                switch(op) {
+                    case "+":
+                        res = n1 + n2;
+                        break; // Importante: el break evita que siga ejecutando los de abajo
+                    case "-":
+                        res = n1 - n2;
+                        break;
+                    case "*":
+                        res = n1 * n2;
+                        break;
+                    case "/":
+                        // Validación extra: División por cero
+                        if (n2 === 0) {
+                            return "Error: No se puede dividir por 0";
+                        }
+                        res = n1 / n2;
+                        break;
+                    default:
+                        return "Error: Operador desconocido";
+                }
+                return res;
+            }
+
+            // FUNCIÓN DE GESTIÓN (Validación y DOM)
+            function gestionarCalculo() {
+                // 1. Obtener valores
+                // parseFloat es vital aquí, si no, en la suma "1" + "1" daría "11"
+                let n1 = parseFloat(document.getElementById("num1").value);
+                let n2 = parseFloat(document.getElementById("num2").value);
+                let op = document.getElementById("operador").value.trim();
+
+                // 2. Validaciones previas (Depuración)
+                if (isNaN(n1) || isNaN(n2)) {
+                    alert("Error: Introduce números válidos en ambos campos.");
+                    return;
+                }
+                
+                const operadoresValidos = ["+", "-", "*", "/"];
+                if (!operadoresValidos.includes(op)) {
+                    alert("Error: El operador debe ser +, -, * o /");
+                    return;
+                }
+
+                // 3. Llamada al cálculo
+                let resultado = realizarCalculo(n1, n2, op);
+
+                // 4. Mostrar resultado
+                document.getElementById("resultado").innerHTML = "Resultado: " + resultado;
+                
+                // Cambio de color según si dio error o no
+                if (String(resultado).startsWith("Error")) {
+                    document.getElementById("resultado").style.color = "red";
+                } else {
+                    document.getElementById("resultado").style.color = "blue";
+                }
+            }
+        </script>
+    </body>
+</html>

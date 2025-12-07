@@ -1,0 +1,47 @@
+<!DOCTYPE html> 
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 10: validar caracter operacion</title>
+    </head>
+
+    <body>
+        <h3>Introduce un caracter de operacion </h3>
+        <label>caracter de operación (+,-,*,/):</label>
+        <input type="text" id="operador"> 
+        <br><br>
+        
+
+        <button onclick="validarOperador()">Validar dato</button>
+        <p id="resultado" style="font-weight: bold; font-size: 1.2em;"></p>
+
+        <script>
+        // Lógica de comparación pura
+        function validarOperador() {
+            let op=document.getElementById("operador").value;
+
+            //definimos caracteres validos
+            const validos=["+","-","*","/"];
+
+            //validacion
+            if (op.trim()===""){
+                alert("Error: Debes escribir un caracter")
+                return;
+            }
+
+            //usamos .includes(), comprobamos si op esta en la lista validos
+            if (validos.includes(op)){
+                document.getElementById("resultado").style.color="green";
+                document.getElementById("resultado").innerHTML="Correcto:El caracter'"+op+"' es un operador valido";
+
+            }else{
+                alert ("Error: '"+op+"' no es un operador valido");
+                document.getElementById("resultado").style.color="red";
+                document.getElementById("resultado").innerHTML="Operador no valido"
+            }
+        }
+
+        </script>
+    </body>
+</html>
