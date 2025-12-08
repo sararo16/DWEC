@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen: Biblioteca Completa</title>
+    <style>
+        /* ESTILOS (Idénticos al original) */
+        body { font-family: sans-serif; padding: 20px; background-color: #f9f9f9; }
+        .panel { background: white; padding: 20px; border: 1px solid #ccc; border-radius: 8px; margin-bottom: 20px; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; background: white; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #2c3e50; color: white; }
+
+        /* Clases de estado */
+        .estado-disponible { background-color: #d4edda; color: #155724; }
+        .estado-prestado { background-color: #f8d7da; color: #721c24; text-decoration: line-through; }
+
+        /* Inputs y Botones */
+        input { padding: 8px; width: 30%; margin-right: 10px; }
+        button { cursor: pointer; padding: 5px 10px; color: white; border: none; border-radius: 3px; }
+        
+        .btn-azul { background-color: #007bff; width: 100%; padding: 10px; margin-top: 10px;}
+        .btn-rojo { background-color: #dc3545; }
+        .btn-amarillo { background-color: #ffc107; color: black; }
+    </style>
+</head>
+<body>
+
+    <h1>📚 Gestión de Biblioteca (Arquitectura Examen)</h1>
+
+    <div class="panel">
+        <h3>Nuevo Libro</h3>
+        <form id="formBiblioteca">
+            <input type="text" id="titulo" placeholder="Título del libro" required>
+            <input type="text" id="autor" placeholder="Autor" required>
+            <input type="number" id="paginas" placeholder="Nº Páginas" required>
+            
+            <button type="submit" class="btn-azul">Añadir a la Biblioteca</button>
+        </form>
+    </div>
+
+    <div class="panel">
+        <h3>Listado de Libros</h3>
+        <p>Total libros: <b id="totalLibros">0</b> | Total Páginas: <b id="totalPaginas">0</b></p>
+        
+        <table id="tablaLibros">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Páginas</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTabla"></tbody>
+        </table>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

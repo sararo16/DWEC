@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Alumnos - Arquitectura Examen</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; padding: 20px; }
+        h1, h2 { color: #333; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input, button { padding: 8px; margin-top: 5px; width: 100%; box-sizing: border-box; border-radius: 4px; border: 1px solid #ccc; }
+        
+        button[type="submit"] { background-color: #007bff; color: white; border: none; cursor: pointer; margin-top: 15px; font-size: 16px; }
+        button[type="submit"]:hover { background-color: #0056b3; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; background: white; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #343a40; color: white; }
+        
+        .btn-borrar { background-color: #dc3545; width: auto; color: white; border: none; padding: 5px 10px; } 
+        
+        /* Estilos visuales dinámicos */
+        .aprobado { background-color: #d4edda; color: #155724; font-weight: bold; }
+        .suspenso { background-color: #f8d7da; color: #721c24; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>🎓 Gestor de Alumnos</h1>
+
+    <div class="card">
+        <h2>Añadir Alumno</h2>
+        <form id="formAñadir">
+            <label>DNI:</label>
+            <input type="text" id="dni" required placeholder="Ej: 12345678A">
+            
+            <label>Nombre:</label>
+            <input type="text" id="nombre" required>
+            
+            <label>Nota Teórica:</label>
+            <input type="number" id="teorica" required min="0" max="10" step="0.1">
+            
+            <label>Nota Práctica:</label>
+            <input type="number" id="practica" required min="0" max="10" step="0.1">
+            
+            <button type="submit">Añadir Alumno</button>
+        </form>
+    </div>
+
+    <h3>Número total alumnos aprobados: <span id="totalAprobados">0</span></h3>
+
+    <table id="tablaAlumnos">
+        <thead>
+            <tr>
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Promedio</th>
+                <th>Estado</th>
+                <th>Acción</th> 
+            </tr>
+        </thead>
+        <tbody id="cuerpoTabla"></tbody>
+    </table>
+
+    <script src="app.js"></script>
+</body>
+</html>

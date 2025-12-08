@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor Taller - Arquitectura Examen</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f4f4f4; }
+        .panel { background: white; padding: 20px; border: 1px solid #ccc; margin-bottom: 20px; border-radius: 5px; }
+        
+        /* Tabla */
+        table { width: 100%; border-collapse: collapse; background: white; margin-top: 10px;}
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background: #007bff; color: white; }
+        
+        /* Inputs y Botones */
+        input { padding: 8px; margin: 5px; width: 45%; border: 1px solid #ccc; border-radius: 4px; }
+        label { font-weight: bold; display: block; margin-top: 5px; }
+        
+        button { cursor: pointer; padding: 10px 15px; border: none; border-radius: 4px; color: white; font-weight: bold; margin-top: 10px; }
+        .btn-registrar { background-color: #28a745; width: 100%; }
+        .btn-modificar { background-color: #ffc107; color: black; width: 100%; }
+        .btn-borrar { background-color: #dc3545; font-size: 0.9em; padding: 5px 10px; }
+        
+        /* Clases Dinámicas */
+        .economico { background-color: #d4edda; color: #155724; font-weight: bold; }
+        .costoso { background-color: #fff3cd; color: #856404; font-weight: bold;}
+    </style>
+</head>
+<body>
+
+    <h1>🔧 Gestor de Taller</h1>
+
+    <div class="panel">
+        <h3>Alta de Vehículo</h3>
+        <form id="formAlta">
+            <label>Matrícula:</label>
+            <input type="text" id="matricula" required placeholder="Ej: 1234BBC">
+            
+            <label>Avería:</label>
+            <input type="text" id="averia" required placeholder="Descripción del fallo">
+            
+            <label>Precio Base (€):</label>
+            <input type="number" id="precioBase" required step="0.01">
+            
+            <button type="submit" class="btn-registrar">Registrar Vehículo</button>
+        </form>
+    </div>
+
+    <button id="btnCalcular" style="background-color: #007bff; width: 100%; margin-bottom: 20px;">
+        Actualizar Listado y Calcular Totales
+    </button>
+
+    <div class="panel">
+        <h3>Listado de Reparaciones</h3>
+        <table id="tablaVehiculos">
+            <thead>
+                <tr>
+                    <th>Matrícula</th>
+                    <th>Avería</th>
+                    <th>Precio Final (+21% IVA)</th>
+                    <th>Categoría</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTabla"></tbody>
+        </table>
+        
+        <h3>Facturación Total: <span id="totalFacturacion">0.00</span> €</h3>
+    </div>
+
+    <div class="panel">
+        <h3>Modificar Reparación Existente</h3>
+        <form id="formModificar">
+            <label>Matrícula (Buscar):</label>
+            <input type="text" id="modMatricula" required placeholder="Introduce matrícula existente">
+            
+            <label>Nueva Avería:</label>
+            <input type="text" id="modAveria" placeholder="Dejar en blanco para no cambiar">
+            
+            <label>Nuevo Precio Base:</label>
+            <input type="number" id="modPrecioBase" step="0.01" placeholder="Dejar en blanco para no cambiar">
+            
+            <button type="submit" class="btn-modificar">Modificar Datos</button>
+        </form>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

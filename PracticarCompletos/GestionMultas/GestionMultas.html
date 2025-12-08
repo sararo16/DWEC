@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Multas - Arquitectura Examen</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; padding: 20px; }
+        h1, h2 { color: #333; }
+        
+        /* Cajas de formulario */
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input, button { padding: 8px; margin-top: 5px; width: 100%; box-sizing: border-box; }
+        
+        button { background-color: #007bff; color: white; border: none; cursor: pointer; margin-top: 15px; font-size: 16px; border-radius: 4px; }
+        .btn-submit { background-color: #28a745; }
+        button:hover { opacity: 0.9; }
+        
+        /* Estilos de Tabla */
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #343a40; color: white; }
+        
+        .btn-borrar { background-color: #dc3545; color: white; border: none; width: auto; padding: 5px 10px; }      
+        
+        /* Clase Dinámica */
+        .grave {
+            background-color: #ffcccc; 
+            font-weight: bold; 
+            color: #a00;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚓 Gestor de Multas</h1>
+
+    <div class="card">
+        <h2>Añadir Multa</h2>
+        <form id="formAñadir">
+            <label for="idmulta">ID Multa:</label>
+            <input type="text" id="idmulta" required placeholder="Ej: M2025001">
+            
+            <label for="matricula">Matrícula:</label>
+            <input type="text" id="matricula" required placeholder="Ej: 1234ABC">
+            
+            <label for="velocidad">Velocidad (km/h):</label>
+            <input type="number" id="velocidad" required >
+            
+            <label for="limite">Límite (km/h):</label>
+            <input type="number" id="limite" required>
+            <br>
+            <button type="submit" class="btn-submit">Añadir Infracción</button>
+        </form>
+    </div>
+    
+    <h3>Recaudación total: <span id="totalRecaudacion">0.00</span>€</h3>
+
+    <table id="tablaMultas">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Matrícula</th>
+                <th>Velocidad</th>
+                <th>Límite</th>
+                <th>Exceso (km/h)</th>
+                <th>Importe</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpoTabla"></tbody>
+    </table>
+
+    <script src="app.js"></script>    
+</body>
+</html>

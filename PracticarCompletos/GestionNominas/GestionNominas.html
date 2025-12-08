@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSolutions - Arquitectura Examen</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; padding: 20px; }
+        h1, h2 { color: #333; }
+        
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input { padding: 8px; margin-top: 5px; width: 100%; box-sizing: border-box; }
+        
+        button { background-color: #007bff; color: white; border: none; cursor: pointer; margin-top: 15px; font-size: 16px; padding: 10px; border-radius: 4px;}
+        button:hover { opacity: 0.9; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; background: white; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #343a40; color: white; }
+        
+        .btn-delete { background-color: #dc3545; width: auto; padding: 5px 10px; margin: 0; }
+        .high-salary { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>🚀 TechSolutions HR</h1>
+
+    <div class="card">
+        <h2>Alta de Empleado</h2>
+        <form id="formAlta">
+            <label>DNI:</label>
+            <input type="text" id="dni" required placeholder="Ej: 12345678A">
+            
+            <label>Nombre:</label>
+            <input type="text" id="nombre" required>
+            
+            <label>Sueldo Base (€):</label>
+            <input type="number" id="base" required step="100">
+            
+            <label>Años Antigüedad:</label>
+            <input type="number" id="antiguedad" required value="0">
+            
+            <button type="submit">Contratar Empleado</button>
+        </form>
+    </div>
+
+    <button id="btnCalcular" style="background-color: #28a745; margin-bottom: 20px; width: 100%;">
+        Calcular Nóminas y Filtrar Seniors
+    </button>
+
+    <h2>Plantilla Completa</h2>
+    <table id="tablaEmpleados">
+        <thead>
+            <tr>
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Base</th>
+                <th>Antigüedad</th>
+                <th>Sueldo Final</th>
+                <th>Categoría</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpoTabla"></tbody>
+    </table>
+
+    <h2>Empleados Senior (> 2000€)</h2>
+    <table id="tablaSeniors">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Sueldo Final</th>
+                <th>Retención IRPF (15%)</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpoSeniors"></tbody>
+    </table>
+
+    <script src="app.js"></script>
+</body>
+</html>

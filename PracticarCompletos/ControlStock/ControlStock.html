@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>MarketStock - Control de Inventario</title>
+    <style>
+        /* CSS se mantiene igual para los estilos visuales */
+        body { font-family: 'Trebuchet MS', sans-serif; background-color: #333; color: white; padding: 20px; }
+        .container { display: flex; gap: 20px; }
+        .panel { background: #444; padding: 20px; border-radius: 10px; flex: 1; }
+        input { width: 95%; padding: 8px; margin: 5px 0 15px 0; border: none; border-radius: 4px; }
+        button { width: 100%; padding: 10px; background: #ff9800; border: none; color: black; font-weight: bold; cursor: pointer; }
+        button:hover { background: #e68900; }
+        table { width: 100%; margin-top: 20px; border-collapse: collapse; background: #555; }
+        th { background: #222; padding: 10px; }
+        td { padding: 10px; border-bottom: 1px solid #666; }
+        .alerta-stock { color: #ff5555; font-weight: bold; }
+        .ok-stock { color: #55ff55; }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align: center;">📦 MarketStock Inventario</h1>
+
+    <div class="container">
+        <div class="panel">
+            <h3>Nuevo Producto</h3>
+            <form id="formAdd">
+                <label>Código Ref:</label>
+                <input type="text" id="cod" required>
+                <label>Nombre:</label>
+                <input type="text" id="nom" required>
+                <label>Precio Unitario (€):</label>
+                <input type="number" id="pre" step="0.01" required>
+                <label>Stock Inicial:</label>
+                <input type="number" id="stk" required>
+                <button type="submit" id="btnAdd">Añadir al Almacén</button>
+            </form>
+        </div>
+
+        <div class="panel">
+            <h3>Actualizar Stock</h3>
+            <form id="formMod">
+                <label>Código Ref a buscar:</label>
+                <input type="text" id="modCod" required>
+                <label>Nuevo Stock:</label>
+                <input type="number" id="modStk" required>
+                <button type="submit" id="btnModificar" style="background-color: #00bcd4;">Actualizar Cantidad</button>
+            </form>
+            <br>
+            <button id="btnCalcular" style="background-color: #9c27b0; color: white;">
+                Calcular Valor del Almacén
+            </button>
+        </div>
+    </div>
+
+    <h2 id="tituloTotal">Valor Total Inventario: 0.00 €</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Cód</th>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Valor (€)</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody id="tablaCuerpo"></tbody>
+    </table>
+
+    <script src="app.js"></script>
+</body>
+</html>
