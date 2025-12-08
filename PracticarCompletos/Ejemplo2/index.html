@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>FlightEX - Gestión de Vuelos</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background-color: #f4f4f4; }
+        .panel { background: white; padding: 20px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px; }
+        
+        input { padding: 8px; margin: 5px 0; width: 100%; box-sizing: border-box; }
+        label { font-weight: bold; margin-top: 10px; display: block; }
+        
+        button { padding: 10px; width: 100%; margin-top: 10px; cursor: pointer; color: white; border: none; font-weight: bold; }
+        .btn-add { background-color: #28a745; }
+        .btn-mod { background-color: #ffc107; color: black; }
+        .btn-calc { background-color: #17a2b8; }
+        .btn-show { background-color: #6c757d; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; background: white; }
+        th, td { border: 1px solid #999; padding: 8px; text-align: left; }
+        th { background-color: #333; color: white; }
+    </style>
+</head>
+<body>
+
+    <h1>✈️ FlightEX</h1>
+
+    <div class="panel">
+        <h3>Gestión de Vuelo</h3>
+        <form id="formVuelo">
+            <label>Código:</label>
+            <input type="text" id="codigo" required placeholder="Ej: VY7346">
+            
+            <label>Nº de Plazas:</label>
+            <input type="number" id="plazas" required>
+            
+            <label>Importe del Billete (€):</label>
+            <input type="number" id="importe" step="0.01" required>
+
+            <button type="button" id="btnAnadir" class="btn-add">Añadir</button>
+            <button type="button" id="btnModificar" class="btn-mod">Modificar</button>
+            <button type="button" id="btnCalcular" class="btn-calc">Calcular</button>
+        </form>
+    </div>
+
+    <div id="resultadoCalculo" class="panel" style="display:none; background:#e2e6ea;">
+        <h3>Resultado del Cálculo:</h3>
+        <p id="textoCalculo"></p>
+    </div>
+
+    <div class="panel">
+        <h3>Listado General de Vuelos</h3>
+        <table id="tablaVuelos">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Plazas</th>
+                    <th>Importe</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoVuelos"></tbody>
+        </table>
+    </div>
+
+    <div class="panel">
+        <button id="btnMostrarRentables" class="btn-show">Mostrar Vuelos Muy Rentables</button>
+        
+        <div id="divRentables" style="display:none; margin-top: 15px;">
+            <h3>💰 Vuelos Muy Rentables (> 20.000€)</h3>
+            <table id="tablaRentables">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Ingreso Estimado</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoRentables"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
