@@ -1,55 +1,51 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlightEX - Examen</title>
-    <style>
-        body { font-family: sans-serif; max-width: 800px; margin: 20px auto; }
-        .panel { padding: 20px; border: 1px solid #ccc; background: #f9f9f9; border-radius: 8px; }
-        label { display: inline-block; width: 100px; font-weight: bold; }
-        input { padding: 5px; margin-bottom: 10px; }
-        button { padding: 8px 15px; cursor: pointer; margin-right: 5px; }
-        #mensaje { margin-top: 15px; font-weight: bold; color: blue; }
-        .error { color: red !important; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-        th { background-color: #e2e2e2; }
-    </style>
+    <title>Flight EX</title>
 </head>
 <body>
+    <h1>Vuelos</h1>
+    <label for="codigo">Codigo: </label>
+    <input type="text" id="codigo" placeholder="codigo">
+    <label for="numPlazas">Número de plazas: </label>
+    <input type="number" id="numPlazas" placeholder="Plazas">
+    <label for="importe">Importe: </label>
+    <input type="number" id="importe" placeholder="Importe">
+    <button id="btnAdd">Añadir</button>
+    <button id="btnModify">Modificar</button>
+    <button id="btnCalcular">Calcular</button>
+    <h2>Lista de vuelos</h2>
+    <table id="tablavuelos" border="1">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Número de plazas</th>
+                <th>Importe</th>
+                <th>Ingreso</th>
+                <th>Rentabilidad</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <h2>Lista de vuelos muy rentables</h2>
+    <table id="tablaMuyRentables" border="1">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Número de plazas</th>
+                <th>Ingreso</th>
+                <th>Importe</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 
-    <h1>Gestión de Vuelos - FlightEX</h1>
 
-    <div class="panel">
-        <div>
-            <label for="txtCodigo">Código:</label>
-            <input type="text" id="txtCodigo" placeholder="Ej: VY7346">
-        </div>
-        <div>
-            <label for="txtPlazas">Nº de plazas:</label>
-            <input type="number" id="txtPlazas" placeholder="0">
-        </div>
-        <div>
-            <label for="txtImporte">Importe (€):</label>
-            <input type="number" id="txtImporte" step="0.01" placeholder="0.00">
-        </div>
-
-        <div style="margin-top: 10px;">
-            <button id="btnAnadir">Añadir</button>
-            <button id="btnModificar">Modificar</button>
-            <button id="btnCalcular">Calcular</button>
-        </div>
-
-        <div id="mensaje"></div>
-    </div>
-
-    <hr>
-
-    <button id="btnVerRentables">VER VUELOS MUY RENTABLES</button>
-    <div id="zonaTabla"></div>
-
-    <script type="module" src="main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
 
